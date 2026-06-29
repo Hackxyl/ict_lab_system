@@ -303,7 +303,7 @@ img{
 .hero-section{
     position:relative;
 
-    min-height:90vh;
+    min-height:calc(100vh - 90px);
 
     background:
     linear-gradient(
@@ -344,7 +344,7 @@ img{
 
     align-items:center;
 
-    min-height:90vh;
+    min-height:calc(100vh - 90px);
 }
 
 .hero-content{
