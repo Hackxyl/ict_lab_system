@@ -28,8 +28,8 @@ A modern Django-based ICT laboratory management system developed for the Kiangin
 * Chart.js
 * Font Awesome
 
-## Author
+## Developer
 
-Meshack Musembi
+Meshack Muindi
 
 Kiangini ICT Department
