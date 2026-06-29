@@ -1,0 +1,98 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+
+
+    <div class="page-badge student">
+        <i class="fas fa-pen"></i>
+        Edit Reservation
+    </div>
+
+</div>
+
+<!-- MESSAGES -->
+{% if messages %}
+<div class="messages">
+
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+</div>
+{% endif %}
+
+<!-- FORM CARD -->
+<div class="dashboard-card booking-card">
+
+    <div class="card-header">
+        <h3>Modify your reservation before approval</h3>
+    </div>
+<br> <br>
+    <form method="POST" class="dashboard-form">
+        {% csrf_token %}
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Date</label>
+
+                <input
+                    type="date"
+                    name="date"
+                    value="{{ booking.date|date:'Y-m-d' }}"
+                    required>
+            </div>
+<br>
+            <div class="form-group">
+                <label>Start Time</label>
+
+                <input
+                    type="time"
+                    name="start_time"
+                    value="{{ booking.start_time|time:'H:i' }}"
+                    required>
+            </div>
+<br>
+            <div class="form-group">
+                <label>End Time</label>
+
+                <input
+                    type="time"
+                    name="end_time"
+                    value="{{ booking.end_time|time:'H:i' }}"
+                    required>
+            </div>
+
+        </div>
+<br> <br>
+        <div class="form-actions">
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                <i class="fas fa-save"></i>
+                Update Booking
+
+            </button>
+
+            <a href="{% url 'bookings:my_bookings' %}"
+               class="btn btn-secondary">
+
+                <i class="fas fa-arrow-left"></i>
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

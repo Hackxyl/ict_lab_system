@@ -1,0 +1,199 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+
+    
+
+    <div class="page-badge officer">
+        <i class="fas fa-user-shield"></i>
+        ICT Officer
+    </div>
+
+</div>
+
+<!-- KPI STATISTICS -->
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon orange">
+            <i class="fas fa-clock"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ pending_bookings }}</h2>
+            <p>Pending Requests</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon green">
+            <i class="fas fa-check-circle"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ approved_bookings }}</h2>
+            <p>Approved Bookings</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon red">
+            <i class="fas fa-times-circle"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ rejected_bookings }}</h2>
+            <p>Rejected Requests</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon blue">
+            <i class="fas fa-desktop"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ available_computers }}</h2>
+            <p>Available Computers</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+<div class="dashboard-card">
+
+    <div class="card-header">
+        <h3>Quick Actions</h3>
+    </div>
+
+    <div class="quick-links">
+
+        <a href="{% url 'announcements' %}"
+           class="quick-link">
+
+            <div class="quick-icon blue">
+                <i class="fas fa-bullhorn"></i>
+            </div>
+
+            <div>
+                <h4>View Announcements</h4>
+                <p>View department notices.</p>
+            </div>
+
+        </a>
+
+        <a href="/admin/bookings/booking/"
+           class="quick-link">
+
+            <div class="quick-icon green">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+
+            <div>
+                <h4>Manage Bookings</h4>
+                <p>Review and monitor requests.</p>
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- APPROVAL QUEUE -->
+<div class="dashboard-card">
+
+    <div class="card-header">
+        <h3>Pending Approval Queue</h3>
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="dashboard-table">
+
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Computer</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for booking in recent_bookings %}
+            {% if booking.status == 'pending' %}
+
+            <tr>
+
+                <td>{{ booking.user.username }}</td>
+
+                <td>{{ booking.computer.name }}</td>
+
+                <td>{{ booking.date }}</td>
+
+                <td>{{ booking.start_time }}</td>
+
+                <td>
+                    <span class="badge warning">
+                        Pending
+                    </span>
+                </td>
+
+                <td class="actions">
+
+                    <a href="{% url 'bookings:approve_booking' booking.id %}"
+                       class="action-btn approve">
+
+                        <i class="fas fa-check"></i>
+                        Approve
+
+                    </a>
+
+                    <a href="{% url 'bookings:reject_booking' booking.id %}"
+                       class="action-btn reject">
+
+                        <i class="fas fa-times"></i>
+                        Reject
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endif %}
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="6" class="empty-row">
+
+                    <i class="fas fa-check-circle"></i>
+
+                    <p>No pending approvals available.</p>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

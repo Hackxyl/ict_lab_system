@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ICT Help Desk | Kiangini ICT Department</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+         rel="stylesheet">
+
+    <!-- Services CSS -->
+    <link rel="stylesheet"
+         href="{% static 'css/services.css' %}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <h2>Kiangini <span>ICT</span></h2>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}"
+               class="btn-nav-primary">
+                Dashboard
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}"
+               class="btn-nav-primary">
+                Login
+            </a>
+        {% endif %}
+
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="service-hero">
+
+<div class="container service-hero-grid">
+
+    <div class="service-content"
+         data-aos="fade-right">
+
+        <span class="hero-badge">
+            TECHNICAL SUPPORT
+        </span>
+
+        <h1>ICT Help Desk</h1>
+
+        <p>
+            Professional technical support services for
+            hardware, software, network, and user-related
+            issues across the institution.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'contact' %}"
+               class="btn-primary">
+
+                Open Support Request
+
+            </a>
+
+            <a href="{% url 'home' %}#services"
+               class="btn-secondary">
+
+                Back to Services
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="service-image"
+         data-aos="fade-left">
+
+        <img src="{% static 'images/helpdesk.jpg' %}"
+             alt="ICT Help Desk">
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- STATISTICS -->
+
+<section class="service-stats">
+
+<div class="stat-box">
+    <h2>24/7</h2>
+    <p>Support Availability</p>
+</div>
+
+<div class="stat-box">
+    <h2>95%</h2>
+    <p>Issue Resolution</p>
+</div>
+
+<div class="stat-box">
+    <h2>1000+</h2>
+    <p>Cases Solved</p>
+</div>
+
+</section>
+
+<!-- SUPPORT SERVICES -->
+
+<section class="service-section">
+
+<div class="section-title">
+
+    <span>SUPPORT SERVICES</span>
+
+    <h2>How We Help</h2>
+
+    <p>
+        Our ICT team provides fast and reliable technical
+        assistance to all users.
+    </p>
+
+</div>
+
+<div class="service-grid">
+
+    <div class="service-card"
+         data-aos="fade-up">
+
+        <i class="fas fa-key"></i>
+
+        <h3>Password Recovery</h3>
+
+        <p>
+            Secure password resets and account recovery.
+        </p>
+
+    </div>
+
+    <div class="service-card"
+         data-aos="fade-up"
+         data-aos-delay="100">
+
+        <i class="fas fa-download"></i>
+
+        <h3>Software Installation</h3>
+
+        <p>
+            Application installation, updates,
+            and troubleshooting.
+        </p>
+
+    </div>
+
+    <div class="service-card"
+         data-aos="fade-up"
+         data-aos-delay="200">
+
+        <i class="fas fa-print"></i>
+
+        <h3>Printer Support</h3>
+
+        <p>
+            Printer configuration and maintenance.
+        </p>
+
+    </div>
+
+    <div class="service-card"
+         data-aos="fade-up">
+
+        <i class="fas fa-envelope"></i>
+
+        <h3>Email Configuration</h3>
+
+        <p>
+            Email setup and support services.
+        </p>
+
+    </div>
+
+    <div class="service-card"
+         data-aos="fade-up"
+         data-aos-delay="100">
+
+        <i class="fas fa-tools"></i>
+
+        <h3>Hardware Diagnostics</h3>
+
+        <p>
+            Computer maintenance and repairs.
+        </p>
+
+    </div>
+
+    <div class="service-card"
+         data-aos="fade-up"
+         data-aos-delay="200">
+
+        <i class="fas fa-laptop-house"></i>
+
+        <h3>Remote Assistance</h3>
+
+        <p>
+            Remote support and troubleshooting.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- BENEFITS -->
+
+<section class="service-benefits">
+
+<div class="container">
+
+    <div class="benefit-box">
+
+        <i class="fas fa-headset"></i>
+
+        <h2>Why Use Our Help Desk?</h2>
+
+        <p>
+            Our technical support team delivers timely,
+            reliable, and professional ICT assistance
+            to ensure uninterrupted services.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="service-cta">
+
+<i class="fas fa-headset"></i>
+
+<h2>Need Immediate Support?</h2>
+
+<p>
+    Submit your issue and our ICT team will
+    respond as quickly as possible.
+</p>
+
+<a href="{% url 'contact' %}"
+   class="btn-primary">
+
+    Contact ICT Support
+
+</a>
+
+</section>
+
+
+<!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            © {% now "Y" %} Kiangini ICT Department.
+            All Rights Reserved..
+        </p>
+    </footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+        duration:1000,
+        once:true
+    });
+</script>
+
+<script src="{% static 'js/services.js' %}"></script>
+
+</body>
+</html>

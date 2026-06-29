@@ -1,0 +1,172 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+
+
+    <div class="page-badge student">
+        <i class="fas fa-user-graduate"></i>
+        My Portal
+    </div>
+
+</div>
+
+<!-- STATISTICS -->
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon blue">
+            <i class="fas fa-calendar-check"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ total_my_bookings }}</h2>
+            <p>Total Bookings</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon orange">
+            <i class="fas fa-clock"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ pending }}</h2>
+            <p>Pending Requests</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon green">
+            <i class="fas fa-check-circle"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ approved }}</h2>
+            <p>Approved Bookings</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon purple">
+            <i class="fas fa-desktop"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ available_computers }}</h2>
+            <p>Available Computers</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+<div class="dashboard-card">
+
+    <div class="card-header">
+        <h3>Quick Actions</h3>
+    </div>
+<br>
+    <div class="action-bar">
+
+        <a href="{% url 'bookings:book_computer' %}"
+           class="btn btn-primary">
+
+            <i class="fas fa-plus-circle"></i>
+            Book Computer
+
+        </a>
+
+        <a href="{% url 'bookings:my_bookings' %}"
+           class="btn btn-secondary">
+
+            <i class="fas fa-list"></i>
+            My Bookings
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- RECENT BOOKINGS -->
+<div class="dashboard-card">
+
+    <div class="card-header">
+        <h3>Recent Bookings</h3>
+        
+    </div>
+<br>
+    <div class="table-responsive">
+
+        <table class="dashboard-table">
+
+            <thead>
+                <tr>
+                    <th>Computer</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for booking in my_bookings %}
+
+                <tr>
+
+                    <td>{{ booking.computer.name }}</td>
+
+                    <td>{{ booking.date }}</td>
+
+                    <td>{{ booking.start_time }}</td>
+
+                    <td>{{ booking.end_time }}</td>
+
+                    <td>
+
+                        {% if booking.status == "approved" %}
+                        <span class="badge success">
+                            Approved
+                        </span>
+
+                        {% elif booking.status == "pending" %}
+                        <span class="badge warning">
+                            Pending
+                        </span>
+
+                        {% else %}
+                        <span class="badge danger">
+                            Rejected
+                        </span>
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="5" class="empty-row">
+                        <i class="fas fa-folder-open"></i>
+                        <p>No bookings available.</p>
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,258 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- HEADER -->
+
+<div class="page-header">
+
+    <div class="page-badge admin">
+        <i class="fas fa-user-shield"></i>
+        System Administrator
+    </div>
+
+</div>
+
+<!-- KPI CARDS -->
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon blue">
+            <i class="fas fa-users"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ total_users }}</h2>
+            <p>Total Users</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon purple">
+            <i class="fas fa-desktop"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ total_computers }}</h2>
+            <p>Computers</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+    <div class="stat-icon cyan">
+        <i class="fas fa-laptop"></i>
+    </div>
+
+    <div class="stat-content">
+        <h2>{{ available_computers }}</h2>
+        <p>Available Computers</p>
+    </div>
+</div>
+
+    <div class="stat-card">
+        <div class="stat-icon orange">
+            <i class="fas fa-clock"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ pending_bookings }}</h2>
+            <p>Pending Bookings</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon green">
+            <i class="fas fa-check-circle"></i>
+        </div>
+
+        <div class="stat-content">
+            <h2>{{ approved_bookings }}</h2>
+            <p>Approved</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ANALYTICS -->
+
+<div class="analytics-grid">
+
+    <div class="analytics-card">
+
+        <div class="analytics-icon blue">
+            <i class="fas fa-chart-line"></i>
+        </div>
+
+        <h3>User Growth</h3>
+
+        <h2>{{ user_trend }}%</h2>
+
+        <p>User registration trend.</p>
+
+    </div>
+
+    <div class="analytics-card">
+
+        <div class="analytics-icon green">
+            <i class="fas fa-chart-bar"></i>
+        </div>
+
+        <h3>Booking Activity</h3>
+
+        <h2>{{ booking_trend }}%</h2>
+
+        <p>Booking activity trend.</p>
+
+    </div>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+
+<div class="dashboard-card">
+
+    <div class="card-header">
+        <h3>Admin Tools</h3>
+    </div>
+
+    <div class="quick-links">
+
+        <a href="/admin/" class="quick-link">
+
+            <div class="quick-icon blue">
+                <i class="fas fa-user-shield"></i>
+            </div>
+
+            <div>
+                <h4>Admin Panel</h4>
+                <p>Manage all system records.</p>
+            </div>
+
+        </a>
+
+        <a href="{% url 'announcements' %}" class="quick-link">
+
+            <div class="quick-icon orange">
+                <i class="fas fa-bullhorn"></i>
+            </div>
+
+            <div>
+                <h4>Announcements</h4>
+                <p>Manage system announcements.</p>
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- RECENT BOOKINGS -->
+
+<div class="dashboard-card">
+
+    <div class="card-header">
+        <h3>Recent Bookings</h3>
+        
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="dashboard-table">
+
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Computer</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for booking in recent_bookings %}
+
+            <tr>
+
+                <td>{{ booking.user.username }}</td>
+
+                <td>{{ booking.computer.name }}</td>
+
+                <td>{{ booking.date }}</td>
+
+                <td>
+
+                    {% if booking.status == "approved" %}
+                        <span class="badge success">
+                            Approved
+                        </span>
+
+                    {% elif booking.status == "pending" %}
+                        <span class="badge warning">
+                            Pending
+                        </span>
+
+                    {% else %}
+                        <span class="badge danger">
+                            Rejected
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td class="actions">
+
+                    {% if booking.status == "pending" %}
+
+                    <a href="{% url 'bookings:approve_booking' booking.id %}"
+                       class="action-btn approve">
+
+                        <i class="fas fa-check"></i>
+                        Approve
+
+                    </a>
+
+                    <a href="{% url 'bookings:reject_booking' booking.id %}"
+                       class="action-btn reject">
+
+                        <i class="fas fa-times"></i>
+                        Reject
+
+                    </a>
+
+                    {% else %}
+
+                    <span class="badge success">
+                        Completed
+                    </span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="5" class="empty-row">
+                    No recent bookings available.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

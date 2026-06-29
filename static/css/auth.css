@@ -1,0 +1,214 @@
+/* =========================================
+   KIANGINI ICT SYSTEM
+   LIGHT AUTH SYSTEM (SAAS STYLE)
+   PRIMARY COLOR: #41C0F2
+========================================= */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f5f8fc;
+}
+
+/* CONTAINER */
+.auth-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* CARD */
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    padding: 40px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+
+    border: 1px solid #e9eef5;
+
+    animation: fadeIn 0.4s ease;
+}
+
+/* HEADER */
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-logo {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 14px;
+
+    background: #41C0F2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+    font-size: 24px;
+
+    box-shadow: 0 10px 25px rgba(65,192,242,0.25);
+}
+
+.auth-header h1,
+.auth-header h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.auth-header p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+}
+
+/* INPUTS */
+input,
+.form-control,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    border: 1px solid #e2e8f0;
+
+    background: #f8fafc;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #41C0F2;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(65,192,242,0.15);
+}
+
+/* BUTTON */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #41C0F2;
+    color: #fff;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #1daee0;
+    transform: translateY(-1px);
+}
+
+/* ALERTS */
+.alert {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.alert-danger {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.alert-success {
+    background: #ecfeff;
+    color: #0891b2;
+    border: 1px solid #a5f3fc;
+}
+
+/* FOOTER */
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.auth-footer a {
+    color: #41C0F2;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+    .auth-card {
+        padding: 25px;
+    }
+
+    .auth-header h1,
+    .auth-header h2 {
+        font-size: 22px;
+    }
+}

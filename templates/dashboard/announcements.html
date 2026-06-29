@@ -1,0 +1,126 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+
+    <div class="page-badge">
+        <i class="fas fa-bullhorn"></i>
+        ICT Notices
+    </div>
+
+</div>
+
+<div class="dashboard-card announcements-panel">
+
+    <!-- HEADER -->
+    <div class="announcement-header">
+
+        <div>
+            <h3>Search and browse ICT department notices</h3>
+        </div>
+        <span class="announcement-count">
+            {{ announcements|length }} Notice{{ announcements|pluralize }}
+        </span>
+
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+        <input type="text"
+               id="searchInput"
+               placeholder="Search announcements...">
+
+        <button type="button" class="search-btn">
+            <i class="fas fa-search"></i>
+        </button>
+
+    </div>
+
+    <!-- RESULTS -->
+    <div class="announcement-grid">
+
+        {% for announcement in announcements %}
+
+        <div class="announcement-card"
+             data-title="{{ announcement.title|lower }}"
+             data-message="{{ announcement.message|lower }}">
+
+            <div class="announcement-top">
+
+                <div class="announcement-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+
+                <div class="announcement-date">
+                    {{ announcement.created_at|date:"M d, Y" }}
+                </div>
+
+            </div>
+
+            <h3>{{ announcement.title }}</h3>
+
+            <p>
+                {{ announcement.message|truncatewords:35 }}
+            </p>
+
+            <div class="announcement-footer">
+
+                <span class="announcement-author">
+                    <i class="fas fa-user"></i>
+                    {{ announcement.created_by }}
+                </span>
+
+                <a href="#" class="read-btn">
+                    Read More
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-card">
+
+            <div class="empty-icon">
+                <i class="fas fa-bullhorn"></i>
+            </div>
+
+            <h3>No Announcements</h3>
+
+            <p>
+                There are currently no announcements available.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- IMPORTANT NOTICE -->
+<div class="dashboard-card">
+
+    <div class="card-header">
+        <h3>ICT Department Notice</h3>
+    </div>
+
+    <div class="notice-box">
+    <i class="fas fa-exclamation-triangle"></i>
+
+        <div>
+            Please check announcements regularly for maintenance schedules,
+            system upgrades, laboratory availability, and department updates.
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

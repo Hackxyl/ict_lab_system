@@ -1,0 +1,313 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact ICT Support | Kiangini ICT</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+      rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="logo">
+    <i class="fas fa-microchip"></i>
+    <h2>Kiangini <span>ICT</span></h2>
+</div>
+
+<div class="menu-toggle" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</div>
+
+<nav class="nav-links">
+
+    <a href="/">Home</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'home' %}#services">Services</a>
+
+    {% if user.is_authenticated %}
+
+        <a href="{% url 'dashboard' %}" class="btn-nav-primary">
+            Dashboard
+        </a>
+
+        <form action="{% url 'logout' %}"
+              method="post"
+              class="logout-nav-form">
+            {% csrf_token %}
+            <button type="submit"
+                    class="btn-nav-logout">
+                Logout
+            </button>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'login' %}"
+           class="btn-nav-primary">
+            Login
+        </a>
+
+    {% endif %}
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="page-hero">
+
+<div class="page-hero-content"
+     data-aos="zoom-in">
+
+    <i class="fas fa-headset service-icon-large"></i>
+
+    <h1>ICT Support Center</h1>
+
+    <p>
+        Need assistance? Contact our ICT team
+        and we will respond as soon as possible.
+    </p>
+
+</div>
+
+</section>
+
+<!-- CONTACT SECTION -->
+
+<section class="contact-section-page">
+
+<div class="section-title"
+     data-aos="fade-up">
+
+    <span>GET IN TOUCH</span>
+
+    <h2>Contact ICT Support</h2>
+
+    <p>
+        Our ICT team is ready to assist you with
+        technical issues, account problems,
+        laboratory support and general inquiries.
+    </p>
+
+</div>
+
+<div class="contact-grid">
+
+    <!-- CONTACT FORM -->
+
+    <div class="contact-card"
+         data-aos="fade-right">
+
+        <h3>Send a Message</h3>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text"
+                       name="name"
+                       placeholder="John Doe"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email"
+                       name="email"
+                       placeholder="example@gmail.com"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Subject</label>
+                <input type="text"
+                       name="subject"
+                       placeholder="Network issue..."
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+
+                <textarea name="message"
+                          rows="6"
+                          placeholder="Describe your issue..."
+                          required></textarea>
+            </div>
+
+            <button type="submit"
+                    class="btn-primary">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- CONTACT INFORMATION -->
+
+    <div class="contact-info-card"
+         data-aos="fade-left">
+
+        <h3>Contact Information</h3>
+
+        <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+254 700 000 000</span>
+        </div>
+
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>ict@kiangini.go.ke</span>
+        </div>
+
+        <div class="contact-item">
+            <i class="fas fa-location-dot"></i>
+            <span>Makueni County, Kenya</span>
+        </div>
+
+        <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Monday – Friday : 8AM – 5PM</span>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- SUPPORT SERVICES -->
+
+<section class="support-section">
+
+<div class="container">
+
+    <div class="section-title"
+         data-aos="fade-up">
+
+        <h2>ICT Support Services</h2>
+
+    </div>
+
+    <div class="about-grid about-grid-4">
+
+        <div class="about-card"
+             data-aos="zoom-in">
+            <i class="fas fa-network-wired"></i>
+            <h3>Network Support</h3>
+            <p>Internet, LAN and connectivity assistance.</p>
+        </div>
+
+        <div class="about-card"
+             data-aos="zoom-in"
+             data-aos-delay="100">
+            <i class="fas fa-laptop"></i>
+            <h3>Computer Repairs</h3>
+            <p>Hardware and software troubleshooting.</p>
+        </div>
+
+        <div class="about-card"
+             data-aos="zoom-in"
+             data-aos-delay="200">
+            <i class="fas fa-user-shield"></i>
+            <h3>Account Support</h3>
+            <p>Password recovery and user assistance.</p>
+        </div>
+
+        <div class="about-card"
+             data-aos="zoom-in"
+             data-aos-delay="300">
+            <i class="fas fa-server"></i>
+            <h3>System Support</h3>
+            <p>ICT systems and infrastructure support.</p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="contact-box"
+         data-aos="fade-up">
+
+<i class="fas fa-headset service-icon-large"></i>
+
+<h2>We Are Ready To Help</h2>
+
+<p>
+    Our ICT team is committed to providing
+    reliable and timely support.
+</p>
+
+<a href="tel:+254700000000"
+   class="btn-primary">
+    Call ICT Support
+</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<p>
+    © {% now "Y" %} Kiangini ICT Department.
+    All Rights Reserved.
+</p>
+
+</footer>
+
+<!-- AOS -->
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 80
+    });
+</script>
+
+<!-- APP JS -->
+
+<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>
