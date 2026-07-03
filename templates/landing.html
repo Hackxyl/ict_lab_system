@@ -1,360 +1,108 @@
+{% extends 'base_public.html' %}
 {% load static %}
 
-<!DOCTYPE html>
+{% block title %}Kiangini ICT Department | Home{% endblock %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiangini ICT Department</title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
-
-<!-- Font Awesome -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- AOS -->
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css"
-         rel="stylesheet">
-
-<!-- Main CSS -->
-<link rel="stylesheet"
-      href="{% static 'css/landing.css' %}">
+{% block content %}
 
 
-</head>
 
-<body>
-
-<!-- ================= TOP BAR ================= -->
-
-<div class="top-bar">
-
-    <div class="top-item item1">
-        <i class="fas fa-envelope"></i>
-        ict@kiangini.go.ke
-    </div>
-
-    <div class="top-item item2">
-        <i class="fas fa-phone"></i>
-        +254 700 000 000
-    </div>
-
-    <div class="top-item item3">
-        <i class="fas fa-clock"></i>
-        Mon - Fri : 8:00 AM - 5:00 PM
-    </div>
-
-</div>
-
-<!-- ================= NAVBAR ================= -->
-
-<header class="navbar">
-
-    <div class="logo">
-        <i class="fas fa-microchip"></i>
-        <h2>Kiangini <span>ICT</span></h2>
-    </div>
-
-    <div class="menu-toggle" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
-    </div>
-
-    <nav class="nav-links">
-
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-
-        {% if user.is_authenticated %}
-
-            <a href="{% url 'dashboard' %}"
-               class="btn-nav-primary">
-                Dashboard
-            </a>
-
-            <form action="{% url 'logout' %}"
-                  method="post"
-                  class="logout-nav-form">
-                {% csrf_token %}
-                <button type="submit"
-                        class="btn-nav-logout">
-                    Logout
-                </button>
-            </form>
-
-        {% else %}
-
-            <a href="{% url 'login' %}"
-               class="btn-nav-primary">
-                Login
-            </a>
-
-        {% endif %}
-
-    </nav>
-
-</header>
-
-<!-- ================= HERO ================= -->
+<!-- ===================================================
+HERO SECTION
+=================================================== -->
 
 <section class="hero-section" id="home">
 
     <div class="hero-overlay"></div>
 
-    <div class="hero-container">
+    <div class="container hero-wrapper">
 
-        <div class="hero-content"
-             data-aos="fade-right">
+        <!-- ===========================
+        LEFT CONTENT
+        ============================ -->
+
+        <div class="hero-content" data-aos="fade-right">
 
             <span class="hero-tag">
+
+                <i class="fas fa-microchip"></i>
+
                 KIANGINI ICT DEPARTMENT
+
             </span>
 
             <h1>
-                ICT Services For Modern Learning
+
+                Empowering
+
+                <span>Digital Learning</span>
+
+                
+
             </h1>
 
             <p>
-                The Kiangini ICT Department delivers digital
-                transformation in all ICT services
+
+                We provide reliable ICT infrastructure
+                and digital learning solutions
+                that enable students and staff
+                to succeed in today's technology-driven world.
+
             </p>
 
             <div class="hero-buttons">
 
                 {% if user.is_authenticated %}
 
-                    <a href="{% url 'dashboard' %}"
-                       class="btn-primary">
-                        Open Dashboard
-                    </a>
+                <a href="{% url 'dashboard' %}" class="btn-primary">
+
+                    <i class="fas fa-gauge-high"></i>
+
+                    Open Dashboard
+
+                </a>
 
                 {% else %}
 
-                    <a href="{% url 'login' %}"
-                       class="btn-primary">
-                        Get Started
-                    </a>
+                <a href="{% url 'login' %}" class="btn-primary">
+
+                    <i class="fas fa-right-to-bracket"></i>
+
+                    Get Started
+
+                </a>
 
                 {% endif %}
 
-                <a href="#services"
-                   class="btn-secondary">
-                    Our Services
+                <a href="#services" class="btn-secondary">
+
+                    <i class="fas fa-arrow-down"></i>
+
+                    Explore Services
+
                 </a>
 
             </div>
 
-            <div class="hero-badges">
+            
 
-                <span>
-                    <i class="fas fa-shield-alt"></i>
-                    Secure System
-                </span>
+        <!-- ===========================
+        HERO IMAGE
+        ============================ -->
 
-                <span>
-                    <i class="fas fa-headset"></i>
-                    ICT Support
-                </span>
+        <div class="hero-image" data-aos="fade-left">
 
-                <span>
-                    <i class="fas fa-laptop-code"></i>
-                    Smart Labs
-                </span>
+            <!-- Decorative Background -->
 
-            </div>
+            <div class="hero-image-bg"></div>
 
-        </div>
+            <!-- Main Image -->
 
-       <div class="hero-image" data-aos="fade-left">
+            <img
+                src="{% static 'images/ict-lab.jpg' %}"
+                alt="Kiangini ICT Laboratory">
 
-    <div class="hero-card card1">
-        <div class="hero-icon">
-            <i class="fas fa-users"></i>
-        </div>
-
-        <h2>500+</h2>
-        <p>Users Served</p>
-    </div>
-
-    <div class="hero-card card2">
-        <div class="hero-icon">
-            <i class="fas fa-chart-line"></i>
-        </div>
-
-        <h2>98%</h2>
-        <p>System Uptime</p>
-    </div>
-
-    <div class="hero-card card3">
-        <div class="hero-icon">
-            <i class="fas fa-network-wired"></i>
-        </div>
-
-        <h2>10+</h2>
-        <p>ICT Services</p>
-    </div>
-
-    <div class="hero-card card4">
-        <div class="hero-icon">
-            <i class="fas fa-headset"></i>
-        </div>
-
-        <h2>24/7</h2>
-        <p>ICT Support</p>
-    </div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<section class="about-section" id="about">
-
-    <div class="section-title">
-        <span>ABOUT US</span>
-        <h2>Kiangini ICT Department</h2>
-        <p>
-            Supporting digital transformation, ICT services,
-            laboratory management and technology innovation.
-        </p>
-    </div>
-
-    <div class="about-grid">
-
-        <!-- Left Side -->
-        <div class="about-image" data-aos="fade-right">
-
-            <div class="about-image-box">
-                <i class="fas fa-building-columns"></i>
-
-                <h3>ICT Department</h3>
-
-                <p>
-                    Smart Technology Solutions
-                </p>
-            </div>
-
-        </div>
-
-        <!-- Right Side -->
-        <div class="about-content" data-aos="fade-left">
-
-            <h3>
-                Driving Digital Transformation
-            </h3>
-
-            <p>
-                The Kiangini ICT Department provides modern
-                technology services, computer laboratory
-                management, technical support, networking,
-                training and digital solutions that improve
-                learning and administration.
-            </p>
-
-            <p>
-                Our mission is to deliver reliable ICT services,
-                promote innovation and support digital growth
-                throughout the institution.
-            </p>
-
-            <div class="about-stats">
-
-                <div class="about-stat-card">
-                    <h3>10+</h3>
-                    <span>Services</span>
-                </div>
-
-                <div class="about-stat-card">
-                    <h3>24/7</h3>
-                    <span>Support</span>
-                </div>
-
-                <div class="about-stat-card">
-                    <h3>100%</h3>
-                    <span>Digital</span>
-                </div>
-
-            </div>
-
-            <a href="{% url 'about' %}"
-               class="btn-primary">
-                Learn More
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= WHY CHOOSE US ================= -->
-
-<section class="why-section">
-
-    <div class="section-title">
-        <span>WHY US</span>
-        <h2>Why Choose Our ICT Department</h2>
-    </div>
-
-    <div class="why-grid">
-
-        <div class="why-card"
-             data-aos="fade-up">
-
-            <div class="why-icon">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-
-            <h3>Secure Platform</h3>
-
-            <p>
-                Protected accounts, secure authentication,
-                and safe digital services.
-            </p>
-
-        </div>
-
-        <div class="why-card"
-             data-aos="fade-up"
-             data-aos-delay="100">
-
-            <div class="why-icon">
-                <i class="fas fa-headset"></i>
-            </div>
-
-            <h3>Fast Support</h3>
-
-            <p>
-                Technical assistance and issue resolution
-                whenever users need help.
-            </p>
-
-        </div>
-
-        <div class="why-card"
-             data-aos="fade-up"
-             data-aos-delay="200">
-
-            <div class="why-icon">
-                <i class="fas fa-chart-line"></i>
-            </div>
-
-            <h3>Smart Monitoring</h3>
-
-            <p>
-                Reports, analytics and system monitoring
-                for better decision making.
-            </p>
-
-        </div>
+           
 
     </div>
 
@@ -362,183 +110,450 @@
 
 
 
-<!-- ================= SERVICES ================= -->
+<!-- ===================================================
+ABOUT SECTION
+=================================================== -->
+
+<section class="home-about" id="about">
+
+    <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+
+            <span>WHO WE ARE</span>
+
+            <h2>
+                Modern Information Technology
+            </h2>
+
+            <P>
+                Our team of ICT professionals ensures that the institution's
+                digital infrastructure is secure, efficient, and innovative.
+            </P>
+
+
+        </div>
+
+        <div class="about-wrapper">
+
+            <!-- =======================
+            IMAGE
+            ======================== -->
+
+            <div class="about-image" data-aos="fade-right">
+
+                <img
+                    src="{% static 'images/about-ict.jpg' %}"
+                    alt="Kiangini ICT Department">
+
+            </div>
+
+            <!-- =======================
+            CONTENT
+            ======================== -->
+
+            <div class="about-content" data-aos="fade-left">
+
+                <span class="about-small-title">
+
+                    DIGITAL EXCELLENCE
+
+                </span>
+
+                <h3>
+
+                    Building a Smart Learning Environment
+
+                </h3>
+
+                <!-- FEATURES -->
+
+                <div class="about-features">
+
+                    <div class="feature-item">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+                            Modern Computer Laboratories
+                        </span>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+                            Professional ICT Support
+                        </span>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+                            Secure Network Infrastructure
+                        </span>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+                            System Administration
+                        </span>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+                            Digital Learning Technologies
+                        </span>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+                            Software Installation & Maintenance
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="about-buttons">
+
+                    <a href="{% url 'about' %}" class="btn-primary">
+
+                        Learn More
+
+                    </a>
+
+                    <a href="{% url 'contact' %}" class="btn-secondary">
+
+                        Contact Us
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================================================
+SERVICES SECTION
+=================================================== -->
 
 <section class="services-section" id="services">
 
-    <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">
-            ICT SERVICES
-        </span>
+    <div class="container">
 
-        <h2>
-            Digital Services We Provide
-        </h2>
+        <div class="section-title" data-aos="fade-up">
 
-        <p>
-            Supporting learning, administration, technology,
-            and digital transformation across Kiangini.
-        </p>
+            <span>OUR SERVICES</span>
+
+            <h2>Professional ICT Solutions</h2>
+
+            <p>
+                We provide modern ICT solutions that improve learning,
+                communication, digital transformation, and institutional
+                productivity through reliable technology services.
+            </p>
+
+        </div>
+
+        <div class="services-grid">
+
+            <!-- Service -->
+
+            <article class="service-card" data-aos="fade-up">
+
+                <img
+                    src="{% static 'images/service-network.jpg' %}"
+                    alt="Network Support">
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+
+                    <h3>Network Support</h3>
+
+                    <p>
+                        Installation, configuration and maintenance of
+                        campus networking infrastructure, internet
+                        connectivity and wireless access.
+                    </p>
+
+                    <a href="{% url 'network_support' %}">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+            <!-- Service -->
+
+            <article class="service-card"
+                     data-aos="fade-up"
+                     data-aos-delay="100">
+
+                <img
+                    src="{% static 'images/service-server.jpg' %}"
+                    alt="System Administration">
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+
+                    <h3>System Administration</h3>
+
+                    <p>
+                        Server management, backups,
+                        cybersecurity, account management,
+                        software deployment and system monitoring.
+                    </p>
+
+                    <a href="{% url 'system_admin' %}">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+            <!-- Service -->
+
+            <article class="service-card"
+                     data-aos="fade-up"
+                     data-aos-delay="200">
+
+                <img
+                    src="{% static 'images/service-computers.jpg' %}"
+                    alt="Computer Services">
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+
+                    <h3>Computer Services</h3>
+
+                    <p>
+                        Computer maintenance,
+                        operating system installation,
+                        software upgrades and laboratory management.
+                    </p>
+
+                    <a href="{% url 'computer_packages' %}">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+            <!-- Service -->
+
+            <article class="service-card"
+                     data-aos="fade-up">
+
+                <img
+                    src="{% static 'images/service-helpdesk.jpg' %}"
+                    alt="ICT Helpdesk">
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+
+                    <h3>ICT Help Desk</h3>
+
+                    <p>
+                        Professional ICT assistance for
+                        students, lecturers and staff whenever
+                        technical support is required.
+                    </p>
+
+                    <a href="{% url 'helpdesk' %}">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+            <!-- Service -->
+
+            <article class="service-card"
+                     data-aos="fade-up"
+                     data-aos-delay="100">
+
+                <img
+                    src="{% static 'images/service-training.jpg' %}"
+                    alt="ICT Training">
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+
+                    <h3>ICT Training</h3>
+
+                    <p>
+                        Digital literacy,
+                        software training,
+                        technical workshops
+                        and ICT capacity building programmes.
+                    </p>
+
+                    <a href="{% url 'ict_training' %}">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+            <!-- Service -->
+
+            <article class="service-card"
+                     data-aos="fade-up"
+                     data-aos-delay="200">
+
+                <img
+                    src="{% static 'images/service-security.jpg' %}"
+                    alt="Cyber Security">
+
+                <div class="service-content">
+
+                    <div class="service-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+
+                    <h3>Cyber Security</h3>
+
+                    <p>
+                        Protecting institutional systems,
+                        user data,
+                        servers and networks
+                        through modern security practices.
+                    </p>
+
+                    <a href="{% url 'contact' %}">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
     </div>
-
-    <div class="services-grid">
-
-        <div class="service-card" data-aos="fade-up">
-
-            <div class="service-icon">
-                <i class="fas fa-network-wired"></i>
-            </div>
-
-            <h3>Network Support</h3>
-
-            <p>
-                Installation, maintenance and troubleshooting
-                of ICT infrastructure.
-            </p>
-
-            <a href="{% url 'network_support' %}">
-                Learn More
-                <i class="fas fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-        <div class="service-card"
-             data-aos="fade-up"
-             data-aos-delay="100">
-
-            <div class="service-icon">
-                <i class="fas fa-server"></i>
-            </div>
-
-            <h3>System Administration</h3>
-
-            <p>
-                User management, server maintenance,
-                backups and security.
-            </p>
-
-            <a href="{% url 'system_admin' %}">
-                Learn More
-                <i class="fas fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-        <div class="service-card"
-             data-aos="fade-up"
-             data-aos-delay="200">
-
-            <div class="service-icon">
-                <i class="fas fa-book-open"></i>
-            </div>
-
-            <h3>ICT Training</h3>
-
-            <p>
-                Technical workshops and digital literacy
-                programs for users.
-            </p>
-
-            <a href="{% url 'ict_training' %}">
-                Learn More
-                <i class="fas fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-        <div class="service-card"
-             data-aos="fade-up">
-
-            <div class="service-icon">
-                <i class="fas fa-headset"></i>
-            </div>
-
-            <h3>ICT Helpdesk</h3>
-
-            <p>
-                Technical support and assistance
-                for students and staff.
-            </p>
-
-            <a href="{% url 'helpdesk' %}">
-                Learn More
-                <i class="fas fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-        <div class="service-card"
-             data-aos="fade-up"
-             data-aos-delay="100">
-
-            <div class="service-icon">
-                <i class="fas fa-laptop-code"></i>
-            </div>
-
-            <h3>Computer Services</h3>
-
-            <p>
-                Software installation, maintenance,
-                upgrades and deployment.
-            </p>
-
-            <a href="{% url 'computer_packages' %}">
-                Learn More
-                <i class="fas fa-arrow-right"></i>
-            </a>
-
-        </div>
 
 </section>
 
-<!-- ================= CALL TO ACTION ================= -->
+<!-- ===================================================
+CALL TO ACTION
+=================================================== -->
 
-<section class="cta-section" data-aos="zoom-in">
+<section class="cta-section">
 
     <div class="cta-overlay"></div>
 
-    <div class="cta-content">
+    <div class="container">
 
-        <span class="cta-badge">
-            DIGITAL TRANSFORMATION
-        </span>
+        <div class="cta-wrapper" data-aos="zoom-in">
 
-        <h2>
-            Ready to Experience Modern ICT Services?
-        </h2>
+            <span class="cta-tag">
 
-        <p>
-            Access laboratory resources, technical support,
-            announcements, digital services and smart ICT
-            solutions through the Kiangini ICT Management System.
-        </p>
+                DIGITAL TRANSFORMATION
 
-        <div class="cta-buttons">
+            </span>
 
-            {% if user.is_authenticated %}
+            <h2>
+
+                Experience Modern ICT Services
+                Designed For Education
+
+            </h2>
+
+            <p>
+
+                Access smart laboratory booking,
+                technical support,
+                ICT announcements,
+                computer resources,
+                digital learning tools
+                and innovative technology solutions
+                through the Kiangini ICT Management System.
+
+            </p>
+
+            <div class="cta-buttons">
+
+                {% if user.is_authenticated %}
 
                 <a href="{% url 'dashboard' %}"
-                   class="cta-primary">
+                   class="btn-primary">
+
                     <i class="fas fa-gauge-high"></i>
+
                     Open Dashboard
+
                 </a>
 
-            {% else %}
+                {% else %}
 
                 <a href="{% url 'login' %}"
-                   class="cta-primary">
+                   class="btn-primary">
+
                     <i class="fas fa-right-to-bracket"></i>
-                    Get Started
+
+                    Login Now
+
                 </a>
 
-            {% endif %}
+                {% endif %}
 
-            <a href="#services"
-               class="cta-secondary">
-                <i class="fas fa-arrow-down"></i>
-                Explore Services
-            </a>
+                <a href="{% url 'contact' %}"
+                   class="btn-secondary">
+
+                    Contact ICT Department
+
+                </a>
+
+            </div>
 
         </div>
 
@@ -546,97 +561,158 @@
 
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- ===================================================
+CONTACT PREVIEW
+=================================================== -->
 
-<section class="contact-section" id="contact">
+<section class="contact-preview" id="contact">
 
-    <div class="section-title">
+    <div class="container">
 
-        <span>CONTACT US</span>
+        <div class="section-title" data-aos="fade-up">
 
-        <h2>Need ICT Assistance?</h2>
+            <span>CONTACT US</span>
 
-        <p>
-            Our ICT department is available to provide technical support,
-            laboratory assistance and digital services.
-        </p>
-
-    </div>
-
-    <div class="contact-grid">
-
-        <!-- Left Side -->
-
-        <div class="contact-info-card" data-aos="fade-right">
-
-            <h3>ICT Department Support</h3>
+            <h2>Need ICT Assistance?</h2>
 
             <p>
-                Contact our ICT department team to get digital services
+                Whether you need technical support, computer laboratory
+                assistance, network troubleshooting or ICT consultation,
+                our team is always ready to help.
             </p>
-
-            <div class="contact-item">
-
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-
-                <div>
-                    <h4>Email Address</h4>
-                    <span>ict@kiangini.go.ke</span>
-                </div>
-
-            </div>
-
-            <div class="contact-item">
-
-                <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
-                </div>
-
-                <div>
-                    <h4>Telephone</h4>
-                    <span>+254 700 000 000</span>
-                </div>
-
-            </div>
-
-            <div class="contact-item">
-
-                <div class="contact-icon">
-                    <i class="fas fa-location-dot"></i>
-                </div>
-
-                <div>
-                    <h4>Location</h4>
-                    <span>Kiangini, Makueni County</span>
-                </div>
-
-            </div>
 
         </div>
 
-        <!-- Right Side -->
+        <div class="contact-wrapper">
 
-        <div class="support-card" data-aos="fade-left">
+            <!-- =======================================
+            LEFT
+            ======================================== -->
 
-            <div class="support-icon">
-                <i class="fas fa-headset"></i>
+            <div class="contact-info" data-aos="fade-right">
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Email Address</h3>
+
+                        <a href="mailto:ict@kiangini.go.ke">
+                            ict@kiangini.go.ke
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Telephone</h3>
+
+                        <a href="tel:+254700000000">
+                            +254 700 000 000
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Location</h3>
+
+                        <span>
+                            Kiangini,
+                            Makueni County,
+                            Kenya
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Working Hours</h3>
+
+                        <span>
+
+                            Monday – Friday
+
+                            <br>
+
+                            8:00 AM – 5:00 PM
+
+                        </span>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <h3>ICT Help Desk</h3>
+            <!-- =======================================
+            RIGHT
+            ======================================== -->
 
-            <p>
-                Report technical problems or request support
-                
-            </p>
+            <div class="contact-support" data-aos="fade-left">
 
-            <a href="{% url 'contact' %}"
-               class="btn-primary">
+                <img
+                    src="{% static 'images/contact-support.jpg' %}"
+                    alt="ICT Support">
 
-                Contact ICT Department
+                <div class="support-content">
 
-            </a>
+                    <h3>
+
+                        ICT Help Desk
+
+                    </h3>
+
+                    <p>
+
+                        Report computer problems,
+                        request technical assistance,
+                        seek ICT consultation,
+                        or contact our department
+                        for any technology-related issue.
+
+                    </p>
+
+                    <a href="{% url 'contact' %}"
+                       class="btn-primary">
+
+                        <i class="fas fa-paper-plane"></i>
+
+                        Contact Us
+
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -644,175 +720,4 @@
 
 </section>
 
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-    <div class="footer-top">
-
-        <!-- Department -->
-
-        <div class="footer-column">
-
-            <div class="footer-logo">
-                <i class="fas fa-microchip"></i>
-                <h3>Kiangini ICT Department</h3>
-            </div>
-
-            <p>
-                Providing digital transformation, laboratory management,
-                technical support and modern ICT services to improve
-                learning and technology access.
-            </p>
-
-            <div class="footer-social">
-
-                <a href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fab fa-twitter"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fab fa-github"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- Quick Links -->
-
-        <div class="footer-column">
-
-            <h4>Quick Links</h4>
-
-            <ul>
-
-                <li>
-                    <a href="#home">Home</a>
-                </li>
-
-                <li>
-                    <a href="#about">About</a>
-                </li>
-
-                <li>
-                    <a href="#services">Services</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
-            </ul>
-
-        </div>
-
-        <!-- Services -->
-
-        <div class="footer-column">
-
-            <h4>ICT Services</h4>
-
-            <ul>
-
-                <li>
-                    <a href="{% url 'network_support' %}">
-                        Network Support
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'system_admin' %}">
-                        System Administration
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'ict_training' %}">
-                        ICT Training
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'helpdesk' %}">
-                        ICT Helpdesk
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'computer_packages' %}">
-                        Computer Packages
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-        <!-- Contact -->
-
-        <div class="footer-column">
-
-            <h4>Contact Information</h4>
-
-            <div class="footer-contact">
-
-                <p>
-                    <i class="fas fa-envelope"></i>
-                    ict@kiangini.go.ke
-                </p>
-
-                <p>
-                    <i class="fas fa-phone"></i>
-                    +254 700 000 000
-                </p>
-
-                <p>
-                    <i class="fas fa-location-dot"></i>
-                    Kiangini, Makueni County
-                </p>
-
-                <p>
-                    <i class="fas fa-clock"></i>
-                    Mon – Fri, 8:00 AM – 5:00 PM
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-
-        <p>
-            © {% now "Y" %} Kiangini ICT Department.
-            All Rights Reserved.
-        </p>
-
-        <p>
-            Developer: <strong>Meshack Muindi</strong>
-        </p>
-
-    </div>
-
-</footer>
-
-<!-- AOS -->
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-
-<script src="{% static 'js/landing.js' %}"></script>
-
-</body>
-</html>
-
+{% endblock %}
