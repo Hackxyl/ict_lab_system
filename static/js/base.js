@@ -396,44 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /*==============================================
-    SIMPLE REVEAL CLASS
-    (optional utility)
-    ==============================================*/
-
-    const reveals = document.querySelectorAll(".reveal");
-
-    if (reveals.length) {
-
-        const revealObserver = new IntersectionObserver(
-
-            (entries) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("active");
-
-                    }
-
-                });
-
-            },
-
-            {
-
-                threshold: 0.15
-
-            }
-
-        );
-
-        reveals.forEach(item => revealObserver.observe(item));
-
-    }
-
-});
+   
 
 /*==================================================
     BUTTON RIPPLE EFFECT
