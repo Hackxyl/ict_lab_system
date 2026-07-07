@@ -2578,6 +2578,25 @@ ABOUT SECTION
 
     position:relative;
 
+
+}
+
+.home-about span{
+
+    font-size:12px;
+
+}
+
+.home-about h2{
+    
+    font-size:34px;
+
+}
+
+.home-about p{
+
+    font-size:16px;
+
 }
 
 .about-wrapper{
@@ -2589,6 +2608,8 @@ ABOUT SECTION
     gap:80px;
 
     align-items:center;
+
+    font-size: 14px;
 
 }
 
@@ -2658,7 +2679,7 @@ CONTENT
 
     border-radius:50px;
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:700;
 
@@ -2670,7 +2691,7 @@ CONTENT
 
 .about-content h3{
 
-    font-size:42px;
+    font-size:28px;
 
     line-height:1.2;
 
@@ -2682,7 +2703,7 @@ CONTENT
 
 .about-content p{
 
-    font-size:17px;
+    font-size:14px;
 
     margin-bottom:20px;
 
@@ -2713,11 +2734,11 @@ FEATURES
 
     align-items:flex-start;
 
-    gap:14px;
+    gap:12px;
 
     background:#fff;
 
-    padding:18px;
+    padding:10px;
 
     border-radius:18px;
 
@@ -2739,7 +2760,7 @@ FEATURES
 
     color:var(--success);
 
-    font-size:22px;
+    font-size:15px;
 
     margin-top:2px;
 
@@ -2747,11 +2768,13 @@ FEATURES
 
 .feature-item span{
 
-    font-weight:600;
+    font-weight:400;
 
     color:var(--dark);
 
     line-height:1.5;
+
+    font-size: 14px;
 
 }
 
@@ -2868,6 +2891,8 @@ MOBILE
 
 padding:90px 0;
 
+font-size: 12px;;
+
 }
 
 .trusted-grid{
@@ -2886,9 +2911,16 @@ min-height:420px;
 
 .about-content h3{
 
-font-size:30px;
+font-size:26px;
 
 }
+
+.about-content p{
+
+font-size:14px;
+
+}
+
 
 .about-features{
 
@@ -2944,13 +2976,13 @@ font-size:30px;
 
 .about-content h3{
 
-font-size:26px;
+font-size:20px;
 
 }
 
 .about-content p{
 
-font-size:15px;
+font-size:10px;
 
 }
 
@@ -2959,6 +2991,12 @@ font-size:15px;
 min-height:340px;
 
 border-radius:22px;
+
+}
+
+.about-features{
+
+grid-template-columns:1fr;
 
 }
 
@@ -3173,6 +3211,17 @@ SERVICES
 
 }
 
+.services-section span{
+
+    font-size:12px;
+
+}
+
+.services-section p{
+
+    font-size:16px;
+}
+
 .services-grid{
 
     display:grid;
@@ -3203,6 +3252,8 @@ CARD
     display:flex;
 
     flex-direction:column;
+
+    
 
 }
 
@@ -3254,13 +3305,25 @@ CONTENT
 
 }
 
+.services-content h3{
+
+    font-size:18px;
+
+    margin-bottom:18px;
+
+    color:var(--dark);
+
+}
+
+
+
 .service-icon{
 
-    width:72px;
+    width:52px;
 
-    height:72px;
+    height:52px;
 
-    border-radius:18px;
+    border-radius:20px;
 
     background:var(--primary-light);
 
@@ -3400,8 +3463,85 @@ padding:28px;
 
 }
 
+/*==================================================
+MOBILE PHONES
+==================================================*/
 
+@media(max-width:768px){
+    
+.statistics-section{
 
+padding:70px 0;
+
+}
+
+.stat-icon{
+
+width:70px;
+
+height:70px;
+
+}
+
+.stat-icon i{
+
+font-size:28px;
+
+}
+
+.stat-card h2{
+
+font-size:34px;
+
+}
+
+.stat-card h4{
+
+font-size:18px;
+
+}
+
+.service-card{
+
+border-radius:22px;
+
+}
+
+.service-card img{
+
+height:210px;
+
+}
+
+.service-content{
+
+padding:24px;
+
+}
+
+.service-icon{
+
+width:42px;
+
+height:42px;
+
+font-size:20px;
+
+}
+
+.service-content h3{
+
+font-size:22px;
+
+}
+
+.service-content p{
+
+font-size:15px;
+
+}
+
+}
 /*==================================================
 SMALL PHONES
 ==================================================*/
@@ -3460,11 +3600,11 @@ padding:24px;
 
 .service-icon{
 
-width:62px;
+width:42px;
 
-height:62px;
+height:42px;
 
-font-size:24px;
+font-size:20px;
 
 }
 
@@ -3630,7 +3770,7 @@ CALL TO ACTION
 
     color:#fff;
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:700;
 
