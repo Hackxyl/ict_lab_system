@@ -471,7 +471,7 @@ LOGO
 
     color:var(--muted);
 
-    font-size:12px;
+    font-size:14px;
 
     margin-top:4px;
 
@@ -1482,11 +1482,11 @@ HERO SECTION
 
     background-repeat:no-repeat;
 
-    
+    background-attachment:fixed;
 
     color:#fff;
 
-    padding:90px 0 120px;
+    padding:10px 0 10px;
 
 }
 
@@ -1719,23 +1719,23 @@ BUTTONS
 
     flex-wrap:wrap;
 
-    margin-bottom:55px;
+    margin-bottom:10px;
 
 }
 
 .hero-buttons .btn-primary{
 
-    padding:18px 34px;
+    padding:15px 20px;
 
     border-radius:15px;
 
-    font-size:16px;
+    font-size:15px;
 
 }
 
 .hero-buttons .btn-secondary{
 
-    padding:18px 34px;
+    padding:15px 20px;
 
     border-radius:15px;
 
@@ -1764,6 +1764,7 @@ HERO STATS
     backdrop-filter:blur(12px);
 
     border:1px solid rgba(255,255,255,.08);
+
 
     border-radius:20px;
 
@@ -3770,7 +3771,7 @@ LEFT SIDE
 
     padding:10px;
 
-    background:#fff;
+    background:#daf1fa;
 
     border-radius:22px;
 
@@ -3858,7 +3859,7 @@ RIGHT SIDE
 
 .contact-support{
 
-    background:#fff;
+    background: #daf1fa;
 
     border-radius:30px;
 
