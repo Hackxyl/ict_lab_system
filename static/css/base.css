@@ -3515,7 +3515,7 @@ height:210px;
 
 .service-content{
 
-padding:24px;
+padding:20px;
 
 }
 
@@ -3632,7 +3632,7 @@ font-size:15px;
 
 .stat-card{
 
-padding:26px 18px;
+padding:24px 18px;
 
 }
 
@@ -3704,11 +3704,7 @@ CALL TO ACTION
 
     position:relative;
 
-    width:min(92%,1300px);
-
-    margin:100px auto 90px;
-
-    border-radius:34px;
+    padding: 5rem 0;
 
     overflow:hidden;
 
@@ -3744,11 +3740,9 @@ CALL TO ACTION
 
     z-index:2;
 
-    max-width:900px;
+    max-width:780px;
 
     margin:auto;
-
-    padding:90px 40px;
 
     text-align:center;
 
@@ -3860,21 +3854,21 @@ CALL TO ACTION
 
 .cta-section{
 
-margin:80px auto 70px;
+margin:10px;
 
-border-radius:26px;
+border-radius:10px;
 
 }
 
 .cta-wrapper{
 
-padding:65px 25px;
+padding:20px 10px;
 
 }
 
 .cta-wrapper p{
 
-font-size:16px;
+font-size:15px;
 
 }
 
@@ -3900,7 +3894,7 @@ max-width:320px;
 
 .cta-wrapper{
 
-padding:50px 20px;
+padding:10px 0px;
 
 }
 
@@ -3912,7 +3906,7 @@ font-size:2rem;
 
 .cta-wrapper p{
 
-font-size:15px;
+font-size:14px;
 
 }
 
@@ -3946,9 +3940,17 @@ CONTACT PREVIEW
 
 .contact-preview{
 
-    padding:120px 0;
+    padding:100px 0;
 
     background:#f8fbfd;
+
+}
+
+.contact-preview-section-title span{
+
+    font-size:10px;
+
+     
 
 }
 
@@ -3986,7 +3988,7 @@ LEFT SIDE
 
     gap:20px;
 
-    padding:24px;
+    padding:10px;
 
     background:#fff;
 
@@ -4086,16 +4088,6 @@ RIGHT SIDE
 
 }
 
-.contact-support img{
-
-    width:100%;
-
-    height:330px;
-
-    object-fit:cover;
-
-}
-
 .support-content{
 
     padding:40px;
@@ -4152,13 +4144,13 @@ MOBILE
 
 .cta-section{
 
-padding:90px 0;
+padding:10px 0;
 
 }
 
 .cta-wrapper p{
 
-font-size:16px;
+font-size:14px;
 
 }
 
@@ -4176,7 +4168,7 @@ align-items:center;
 
 width:100%;
 
-max-width:320px;
+max-width:300px;
 
 justify-content:center;
 
@@ -4184,39 +4176,58 @@ justify-content:center;
 
 .contact-preview{
 
-padding:90px 0;
+    padding:10px 0;
+
+}
+
+.contact-preview p{
+
+
+
+font-size: 14px;
+
+}
+.contact-wrapper a{
+
+    font-size: 14px;
+
+}
+
+.contact-wrapper h3{
+
+    font-size: 15px;
 
 }
 
 .contact-card{
 
-padding:20px;
+padding:auto;
 
 }
 
 .contact-icon{
 
-width:64px;
+width:40px;
 
-height:64px;
+height:40px;
 
 }
 
 .contact-icon i{
 
-font-size:24px;
+font-size:18px;
 
 }
 
 .support-content{
 
-padding:30px;
+padding:20px;
 
 }
 
 .support-content h3{
 
-font-size:28px;
+font-size:26px;
 
 }
 
@@ -4248,17 +4259,13 @@ flex-direction:column;
 
 text-align:center;
 
+padding:10px;
+
 }
 
 .contact-card h3{
 
-font-size:18px;
-
-}
-
-.contact-support img{
-
-height:240px;
+font-size:15px;
 
 }
 
