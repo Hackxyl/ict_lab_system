@@ -2045,7 +2045,7 @@ bottom:-15px;
 
 gap:18px;
 
-padding:10px 15px;
+padding:10px px;
 
 font-size:13px;
 
@@ -2468,105 +2468,6 @@ font-size:11px;
 }
 
 /*==================================================
-LANDING PAGE
-ABOUT + TRUSTED SECTION
-==================================================*/
-
-
-/*==================================================
-TRUSTED TECHNOLOGIES
-==================================================*/
-
-.trusted-section{
-
-    padding:55px 0;
-
-    background:#ffffff;
-
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-
-}
-
-.trusted-text{
-
-    text-align:center;
-
-    font-weight:700;
-
-    font-size:17px;
-
-    color:var(--dark);
-
-    margin-bottom:35px;
-
-}
-
-.trusted-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(6,1fr);
-
-    gap:22px;
-
-}
-
-.trusted-item{
-
-    background:#fff;
-
-    border:1px solid var(--border);
-
-    border-radius:18px;
-
-    padding:28px 18px;
-
-    text-align:center;
-
-    transition:.35s;
-
-    box-shadow:var(--shadow-sm);
-
-}
-
-.trusted-item:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:var(--shadow-md);
-
-    border-color:rgba(65,192,242,.35);
-
-}
-
-.trusted-item i{
-
-    font-size:34px;
-
-    color:var(--primary);
-
-    margin-bottom:18px;
-
-}
-
-.trusted-item span{
-
-    display:block;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    color:var(--dark);
-
-    line-height:1.5;
-
-}
-
-
-
-/*==================================================
 ABOUT SECTION
 ==================================================*/
 
@@ -2889,7 +2790,7 @@ MOBILE
 
 .home-about{
 
-padding:90px 0;
+padding:20px 0;
 
 font-size: 12px;;
 
@@ -2917,7 +2818,7 @@ font-size:26px;
 
 .about-content p{
 
-font-size:14px;
+font-size:15px;
 
 }
 
@@ -3065,139 +2966,6 @@ font-size:13px;
 }
 
 }
-
-/*==================================================
-LANDING PAGE
-STATISTICS + SERVICES
-==================================================*/
-
-
-/*==================================================
-STATISTICS
-==================================================*/
-
-.statistics-section{
-
-    position:relative;
-
-    padding:110px 0;
-
-    background:
-    linear-gradient(rgba(8,25,40,.92),
-    rgba(8,25,40,.92)),
-    url("../images/ict-lab.jpg") center/cover;
-
-    overflow:hidden;
-
-}
-
-.statistics-overlay{
-
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at top right,
-    rgba(65,192,242,.12),
-    transparent 55%);
-
-}
-
-.statistics-grid{
-
-    position:relative;
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:28px;
-
-}
-
-.stat-card{
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(12px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:24px;
-
-    padding:42px 30px;
-
-    text-align:center;
-
-    transition:.35s;
-
-}
-
-.stat-card:hover{
-
-    transform:translateY(-8px);
-
-    background:rgba(255,255,255,.12);
-
-}
-
-.stat-icon{
-
-    width:82px;
-
-    height:82px;
-
-    margin:auto;
-
-    margin-bottom:28px;
-
-    border-radius:22px;
-
-    background:rgba(65,192,242,.12);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-.stat-icon i{
-
-    color:var(--primary);
-
-    font-size:34px;
-
-}
-
-.stat-card h2{
-
-    color:#fff;
-
-    font-size:46px;
-
-    margin-bottom:10px;
-
-}
-
-.stat-card h4{
-
-    color:#fff;
-
-    margin-bottom:16px;
-
-}
-
-.stat-card p{
-
-    color:#cbd5e1;
-
-    font-size:15px;
-
-}
-
-
 
 /*==================================================
 SERVICES
@@ -3469,53 +3237,21 @@ MOBILE PHONES
 
 @media(max-width:768px){
     
-.statistics-section{
+.services-section{
 
-padding:70px 0;
-
-}
-
-.stat-icon{
-
-width:70px;
-
-height:70px;
-
-}
-
-.stat-icon i{
-
-font-size:28px;
-
-}
-
-.stat-card h2{
-
-font-size:34px;
-
-}
-
-.stat-card h4{
-
-font-size:18px;
+padding:10px ;
 
 }
 
 .service-card{
 
-border-radius:22px;
-
-}
-
-.service-card img{
-
-height:210px;
+border-radius:20px;
 
 }
 
 .service-content{
 
-padding:20px;
+padding: 20px;
 
 }
 
@@ -3531,7 +3267,7 @@ font-size:20px;
 
 .service-content h3{
 
-font-size:22px;
+font-size:20px;
 
 }
 
@@ -3541,7 +3277,7 @@ font-size:15px;
 
 }
 
-}
+
 /*==================================================
 SMALL PHONES
 ==================================================*/
@@ -3856,7 +3592,7 @@ CALL TO ACTION
 
 margin:10px;
 
-border-radius:10px;
+border-radius:20px;
 
 }
 
@@ -4150,7 +3886,7 @@ padding:10px 0;
 
 .cta-wrapper p{
 
-font-size:14px;
+font-size:15px;
 
 }
 
@@ -4184,12 +3920,12 @@ justify-content:center;
 
 
 
-font-size: 14px;
+font-size: 15px;
 
 }
 .contact-wrapper a{
 
-    font-size: 14px;
+    font-size: 15px;
 
 }
 
@@ -4215,7 +3951,7 @@ height:40px;
 
 .contact-icon i{
 
-font-size:18px;
+font-size:20px;
 
 }
 
