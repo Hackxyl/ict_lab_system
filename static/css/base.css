@@ -14,7 +14,7 @@ ROOT VARIABLES
 
     --primary:#41C0F2;
     --primary-dark:#189dd1;
-    --primary-light:#EDF9FE;
+    --primary-light:#daf1fa;
 
     --dark:#0F172A;
     --dark-2:#1E293B;
@@ -315,7 +315,7 @@ PAGE LOADER
 
     inset:0;
 
-    background:white;
+    background: #daf1fa;
 
     z-index:99999;
 
@@ -333,13 +333,13 @@ PAGE LOADER
 
     content:"";
 
-    width:60px;
+    width:30px;
 
-    height:60px;
+    height:30px;
 
     border-radius:50%;
 
-    border:5px solid #dbeafe;
+    border:5px solid #cce1fa;
 
     border-top-color:var(--primary);
 
@@ -2045,7 +2045,7 @@ bottom:-15px;
 
 gap:18px;
 
-padding:10px px;
+padding:20px px;
 
 font-size:13px;
 
@@ -2531,9 +2531,7 @@ IMAGE
 
     position:absolute;
 
-    inset:-18px;
-
-    border-radius:35px;
+    inset:fit;
 
     background:linear-gradient(135deg,
         rgba(65,192,242,.12),
@@ -2973,7 +2971,7 @@ SERVICES
 
 .services-section{
 
-    background:#f8fbfd;
+    background: white;
 
     padding:120px 0;
 
@@ -3277,6 +3275,7 @@ font-size:15px;
 
 }
 
+}
 
 /*==================================================
 SMALL PHONES
@@ -3676,7 +3675,7 @@ CONTACT PREVIEW
 
 .contact-preview{
 
-    padding:100px 0;
+    padding:50px 0;
 
     background:#f8fbfd;
 
@@ -3748,9 +3747,9 @@ LEFT SIDE
 
 .contact-icon{
 
-    width:72px;
+    width:52px;
 
-    height:72px;
+    height:52px;
 
     border-radius:20px;
 
@@ -3770,7 +3769,7 @@ LEFT SIDE
 
     color:var(--primary);
 
-    font-size:28px;
+    font-size:22px;
 
 }
 
@@ -3778,7 +3777,7 @@ LEFT SIDE
 
     margin-bottom:8px;
 
-    font-size:20px;
+    font-size:18px;
 
     color:var(--dark);
 
@@ -3826,7 +3825,7 @@ RIGHT SIDE
 
 .support-content{
 
-    padding:40px;
+    padding:30px;
 
 }
 
