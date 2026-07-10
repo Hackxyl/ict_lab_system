@@ -3042,6 +3042,166 @@ SERVICES
 CARD
 ==============================*/
 
+.badge-ribbon{
+    position:absolute;
+
+    top:18px;
+    right:-38px;
+
+    width:150px;
+    padding:8px 0;
+
+    text-align:center;
+
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.5px;
+
+    color:#fff;
+
+    transform:rotate(35deg);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+    z-index:10;
+
+    transition:.35s;
+}
+
+.badge-ribbon i{
+    margin-right:6px;
+    font-size:.75rem;
+}
+
+.badge-featured{
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+}
+
+.badge-popular{
+    background:linear-gradient(135deg,#f97316,#fb923c);
+}
+
+.badge-secure{
+    background:linear-gradient(135deg,#10b981,#34d399);
+}
+
+.badge-premium{
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+}
+
+.badge-fast{
+    background:linear-gradient(135deg,#eab308,#facc15);
+    color:#111827;
+}
+
+.badge-new{
+    background:linear-gradient(135deg,#0ea5e9,#38bdf8);
+}
+
+.badge-recommended{
+    background:linear-gradient(135deg,#14b8a6,#2dd4bf);
+}
+
+.featured{
+    border:1px solid rgba(37,99,235,.35);
+}
+
+.popular{
+    border:1px solid rgba(249,115,22,.35);
+}
+
+.secure{
+    border:1px solid rgba(16,185,129,.35);
+}
+
+.premium{
+    border:1px solid rgba(124,58,237,.35);
+}
+
+.service-footer{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-top:28px;
+    padding-top:18px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.rating{
+
+    display:flex;
+    align-items:center;
+    gap:4px;
+
+    color:#fbbf24;
+}
+
+.rating span{
+
+    color:#5a6c83;
+
+    margin-left:6px;
+
+    font-weight:600;
+}
+
+.users{
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:7px 14px;
+
+    border-radius:50px;
+
+    background:rgba(59,130,246,.08);
+
+    border:1px solid rgba(59,130,246,.18);
+
+    color:#324050;
+
+    font-size:.82rem;
+    font-weight:600;
+
+    transition:.35s;
+}
+
+.users i{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:24px;
+    height:24px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+    color:#fff;
+
+    font-size:.72rem;
+
+    box-shadow:0 4px 12px rgba(37,99,235,.35);
+}
+
+.service-card:hover .users{
+
+    background:rgba(59,130,246,.14);
+
+    border-color:rgba(59,130,246,.35);
+
+    transform:translateY(-2px);
+}
 .service-card{
 
     background:#fff;
@@ -3764,7 +3924,7 @@ LEFT SIDE
 
     padding:10px;
 
-    background:#daf1fa;
+    background:#e7f2fd;
 
     border-radius:22px;
 
@@ -3852,7 +4012,7 @@ RIGHT SIDE
 
 .contact-support{
 
-    background: #daf1fa;
+    background: #e7f2fd;
 
     border-radius:30px;
 
@@ -3880,6 +4040,10 @@ RIGHT SIDE
 
     margin-bottom:30px;
 
+}
+
+.featured{
+    border:1px solid rgba(37,99,235,.35);
 }
 
 
