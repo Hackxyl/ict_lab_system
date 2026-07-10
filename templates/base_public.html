@@ -48,10 +48,6 @@
               Home
      </a>
 
-      <a href="{% url 'about' %}"
-        class="{% if 'about' in request.path %}active{% endif %}">
-          About
-    </a>
 
     <a href="{% url 'home' %}#services">
         Services
@@ -137,8 +133,6 @@
             <ul class="footer-links">
 
                 <li><a href="{% url 'home' %}">Home</a></li>
-
-                <li><a href="{% url 'about' %}">About</a></li>
 
                 <li><a href="{% url 'home' %}#services">Services</a></li>
 

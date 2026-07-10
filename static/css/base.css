@@ -4343,18 +4343,29 @@ HERO
 
     position:relative;
 
-    min-height:88vh;
+    overflow:hidden;
+
+    min-height:100vh;
 
     display:flex;
 
     align-items:center;
 
-    overflow:hidden;
-
     background:
-    linear-gradient(rgba(10,25,45,.88),
-    rgba(10,25,45,.88)),
-    url("../images/about-hero.jpg") center/cover no-repeat;
+        linear-gradient(rgba(8,22,36,.78), rgba(8,22,36,.78)),
+        url("../images/123RF.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    color:#fff;
+
+    padding:10px 0 10px;
 
 }
 
@@ -4365,29 +4376,30 @@ HERO
     inset:0;
 
     background:
-    radial-gradient(circle at top right,
-    rgba(65,192,242,.16),
-    transparent 45%);
+        radial-gradient(circle at top right,
+        rgba(65,192,242,.18),
+        transparent 45%),
+
+        radial-gradient(circle at bottom left,
+        rgba(255,255,255,.08),
+        transparent 35%);
+
+    pointer-events:none;
 
 }
 
 .hero-container{
 
     position:relative;
-
     z-index:2;
 
-    display:grid;
+    padding-top: 50px;
 
-    grid-template-columns:1.1fr .9fr;
-
+    display:flex;
+    justify-content:center;
     align-items:center;
-
-    gap:70px;
-
-    padding:80px 0;
-
 }
+
 
 /*==============================
 CONTENT
@@ -4395,8 +4407,13 @@ CONTENT
 
 .page-hero-content{
 
-    max-width:650px;
+    max-width:760px;
 
+    text-align:center;
+
+    color:#fff;
+
+     
 }
 
 .hero-badge{
@@ -4425,24 +4442,26 @@ CONTENT
 
 .page-hero-content h1{
 
-    color:#fff;
-
-    margin-bottom:28px;
+    font-size:clamp(2.8rem,6vw,4.5rem);
 
     line-height:1.1;
 
+    margin:20px 0;
+
+    font-weight:800;
 }
 
 .page-hero-content p{
 
-    color:#d9e4ee;
+    max-width:650px;
 
-    font-size:18px;
+    margin:0 auto 40px;
 
-    line-height:1.9;
+    font-size:1.15rem;
 
-    margin-bottom:40px;
+    color:rgba(255,255,255,.85);
 
+    line-height:1.8;
 }
 
 /*==============================
@@ -4453,10 +4472,13 @@ BUTTONS
 
     display:flex;
 
-    gap:20px;
+    justify-content:center;
+
+    gap:18px;
 
     flex-wrap:wrap;
 
+    margin-top: 30px;
 }
 
 /*==============================
@@ -4482,54 +4504,6 @@ IMAGE
     border:8px solid rgba(255,255,255,.08);
 
 }
-
-/* decorative background */
-
-.about-hero .hero-image::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-
-    height:220px;
-
-    border-radius:50%;
-
-    background:rgba(65,192,242,.12);
-
-    top:-40px;
-
-    right:-40px;
-
-    z-index:-1;
-
-}
-
-.about-hero .hero-image::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:140px;
-
-    height:140px;
-
-    border-radius:24px;
-
-    background:rgba(255,255,255,.06);
-
-    left:-25px;
-
-    bottom:-25px;
-
-    z-index:-1;
-
-}
-
-
 
 /*==================================================
 LARGE TABLETS
