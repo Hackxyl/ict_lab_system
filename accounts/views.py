@@ -113,6 +113,8 @@ def register(request):
 
 def login_view(request):
 
+    print("LOGIN VIEW CALLED")
+
     errors = {}
 
     if request.method == "POST":
@@ -134,24 +136,25 @@ def login_view(request):
                 password=password
             )
 
-            if user is None:
+            print("Authenticated user:", user)
 
+            if user is None:
                 errors["password"] = "Incorrect username or password."
 
-            else:
+        print("Errors:", errors)
 
-                login(request, user)
+        if errors:
+            return render(
+                request,
+                "accounts/login.html",
+                {
+                    "errors": errors,
+                    "data": request.POST,
+                }
+            )
 
-                return redirect("role_redirect")
-
-        return render(
-            request,
-            "accounts/login.html",
-            {
-                "errors": errors,
-                "data": request.POST
-            }
-        )
+        login(request, user)
+        return redirect("role_redirect")
 
     return render(request, "accounts/login.html")
 

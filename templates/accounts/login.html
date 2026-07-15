@@ -5,10 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Login | Kiangini ICT Lab</title>
 
-    <!-- Font -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
@@ -20,81 +25,133 @@
 
     <div class="auth-card">
 
-        <!-- HEADER -->
+        <!-- ==========================
+        HEADER
+        =========================== -->
+
         <div class="auth-header">
+
             <div class="auth-logo">
                 <i class="fas fa-laptop-code"></i>
             </div>
 
             <h1>Kiangini ICT Lab</h1>
-            <p>Sign in to access your dashboard</p>
+
+            <p>
+                Sign in to access your dashboard
+            </p>
+
         </div>
 
-        <!-- FORM -->
-       <form method="POST">
-    {% csrf_token %}
+        <!-- ==========================
+        LOGIN FORM
+        =========================== -->
 
-    <div class="form-group">
+        <form method="POST" action="{% url 'login' %}">
 
-        <label>Username</label>
+            {% csrf_token %}
 
-        <input
-            type="text"
-            name="username"
-            value="{{ data.username|default:'' }}"
-            class="{% if errors.username %}input-error{% endif %}"
-            placeholder="Enter your username"
-            required>
+            <!-- Username -->
 
-        {% if errors.username %}
-            <small class="field-error">
-                {{ errors.username }}
-            </small>
-        {% endif %}
+            <div class="form-group floating-group">
 
-    </div>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder=" "
+                    autocomplete="username"
+                    value="{{ data.username|default:'' }}"
+                    class="{% if errors.username %}input-error{% endif %}"
+                    required>
 
-    <div class="form-group">
+                <label for="username">
+                    Username
+                </label>
 
-        <label>Password</label>
+                {% if errors.username %}
+                <small class="field-error">
+                    {{ errors.username }}
+                </small>
+                {% endif %}
 
-        <input
-            type="password"
-            name="password"
-            class="{% if errors.password %}input-error{% endif %}"
-            placeholder="Enter your password"
-            required>
+            </div>
 
-        {% if errors.password %}
-            <small class="field-error">
-                {{ errors.password }}
-            </small>
-        {% endif %}
 
-    </div>
+            <!-- Password -->
 
-    <button type="submit" class="btn-primary">
-        Sign In
-    </button>
+            <div class="form-group floating-group">
 
-</form>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder=" "
+                    autocomplete="current-password"
+                    class="{% if errors.password %}input-error{% endif %}"
+                    required>
 
-        <!-- FOOTER -->
+                <label for="password">
+                    Password
+                </label>
+
+                <i class="fas fa-eye password-toggle"></i>
+
+                {% if errors.password %}
+                <small class="field-error">
+                    {{ errors.password }}
+                </small>
+                {% endif %}
+
+            </div>
+
+
+            <!-- Button -->
+
+            <button type="submit" class="btn-primary">
+
+                <i class="fas fa-right-to-bracket"></i>
+
+                Sign In
+
+            </button>
+
+        </form>
+
+
+        <!-- ==========================
+        FOOTER
+        =========================== -->
+
         <div class="auth-footer">
+
             <p>
+
                 Don't have an account?
-                <a href="{% url 'register' %}">Create account</a>
+
+                <a href="{% url 'register' %}">
+                    Create account
+                </a>
+
             </p>
-<br>
+
+            <br>
+
             <p>
-                <a href="/">Return to home</a>
+
+                <a href="/">
+                    Return to Home
+                </a>
+
             </p>
+
         </div>
 
     </div>
 
 </div>
 
+<!-- JavaScript -->
 <script src="{% static 'js/auth.js' %}"></script>
 
 </body>

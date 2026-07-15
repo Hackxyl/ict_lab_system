@@ -1,5 +1,6 @@
 /*==================================================
-KIANGINI ICT AUTH
+KIANGINI ICT LAB
+AUTHENTICATION JAVASCRIPT
 Modern SaaS Authentication
 ==================================================*/
 
@@ -9,9 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     REMOVE ERRORS WHILE TYPING
     =========================================*/
 
-    const inputs = document.querySelectorAll("input");
-
-    inputs.forEach(input => {
+    document.querySelectorAll("input").forEach(input => {
 
         input.addEventListener("input", () => {
 
@@ -27,17 +26,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+    /*=========================================
+    FLOATING LABEL SUPPORT
+    =========================================*/
+
+    document.querySelectorAll(".floating-group input").forEach(input => {
+
+        const updateState = () => {
+
+            if (input.value.trim() !== "") {
+
+                input.classList.add("has-value");
+
+            } else {
+
+                input.classList.remove("has-value");
+
+            }
+
+        };
+
+        updateState();
+
+        input.addEventListener("input", updateState);
+
+        input.addEventListener("blur", updateState);
+
+    });
 
     /*=========================================
     PASSWORD STRENGTH
+    REGISTER PAGE ONLY
     =========================================*/
 
-    const password = document.querySelector('input[name="password1"]');
+    const password = document.querySelector("#password1");
 
     if (password) {
 
         const strength = document.createElement("div");
+
         strength.className = "password-strength";
+
         strength.innerHTML = "<span></span>";
 
         password.parentElement.appendChild(strength);
@@ -48,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let score = 0;
 
-            if (value.length >= 6) score++;
+            if (value.length >= 8) score++;
 
             if (/[A-Z]/.test(value)) score++;
 
@@ -88,21 +117,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     /*=========================================
     PASSWORD MATCH
     =========================================*/
 
-    const confirmPassword = document.querySelector('input[name="password2"]');
+    const confirmPassword = document.querySelector("#password2");
 
     if (password && confirmPassword) {
 
-        confirmPassword.addEventListener("input", () => {
+        const validatePasswords = () => {
 
-            if (confirmPassword.value.length === 0) {
+            if (confirmPassword.value === "") {
+
+                confirmPassword.classList.remove("input-success");
 
                 confirmPassword.classList.remove("input-error");
-                confirmPassword.classList.remove("input-success");
+
                 return;
 
             }
@@ -110,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (password.value === confirmPassword.value) {
 
                 confirmPassword.classList.remove("input-error");
+
                 confirmPassword.classList.add("input-success");
 
             }
@@ -117,44 +148,38 @@ document.addEventListener("DOMContentLoaded", () => {
             else {
 
                 confirmPassword.classList.remove("input-success");
+
                 confirmPassword.classList.add("input-error");
 
             }
 
-        });
+        };
+
+        password.addEventListener("input", validatePasswords);
+
+        confirmPassword.addEventListener("input", validatePasswords);
 
     }
-
 
     /*=========================================
     SHOW / HIDE PASSWORD
     =========================================*/
 
-    document.querySelectorAll('input[type="password"]').forEach(input => {
+    document.querySelectorAll(".password-toggle").forEach(toggle => {
 
-        const wrapper = input.parentElement;
+        toggle.addEventListener("click", () => {
 
-        wrapper.style.position = "relative";
+            const input = toggle.parentElement.querySelector("input");
 
-        const icon = document.createElement("i");
-
-        icon.className = "fas fa-eye";
-
-        icon.style.position = "absolute";
-        icon.style.right = "15px";
-        icon.style.top = "42px";
-        icon.style.cursor = "pointer";
-        icon.style.color = "#94a3b8";
-
-        wrapper.appendChild(icon);
-
-        icon.addEventListener("click", () => {
+            if (!input) return;
 
             if (input.type === "password") {
 
                 input.type = "text";
 
-                icon.className = "fas fa-eye-slash";
+                toggle.classList.remove("fa-eye");
+
+                toggle.classList.add("fa-eye-slash");
 
             }
 
@@ -162,14 +187,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 input.type = "password";
 
-                icon.className = "fas fa-eye";
+                toggle.classList.remove("fa-eye-slash");
+
+                toggle.classList.add("fa-eye");
 
             }
 
         });
 
     });
-
 
     /*=========================================
     AUTO HIDE SUCCESS ALERTS
@@ -179,46 +205,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
 
-            alert.style.transition = ".4s";
+            alert.style.transition = ".35s";
 
             alert.style.opacity = "0";
 
-            alert.style.transform = "translateY(-10px)";
+            alert.style.transform = "translateY(-12px)";
 
             setTimeout(() => {
 
                 alert.remove();
 
-            }, 400);
+            }, 350);
 
         }, 4000);
 
     });
 
-
     /*=========================================
-    DISABLE BUTTON AFTER SUBMIT
+    BUTTON LOADING
     =========================================*/
 
-    const form = document.querySelector("form");
-
-    if (form) {
+    document.querySelectorAll("form").forEach(form => {
 
         form.addEventListener("submit", () => {
 
-            const btn = form.querySelector("button[type='submit']");
+            const button = form.querySelector("button[type='submit']");
 
-            if (!btn) return;
+            if (!button) return;
 
-            btn.disabled = true;
+            button.disabled = true;
 
-            btn.innerHTML = `
+            button.classList.add("loading");
+
+            const originalText = button.innerHTML;
+
+            button.dataset.originalText = originalText;
+
+            button.innerHTML = `
                 <i class="fas fa-spinner fa-spin"></i>
                 Please wait...
             `;
 
         });
 
-    }
+    });
 
 });
