@@ -18,17 +18,30 @@ def register(request):
         if not username or not email or not password1 or not password2:
             messages.error(request, "All fields are required.")
             return redirect('register')
+        
+        parts = full_name.split()
+
+        if len(parts) < 2:
+            messages.error(
+            request,
+         "Please enter your full names!"
+        )
+            return redirect("register")
 
         if password1 != password2:
-            messages.error(request, "Passwords do not match.")
+            messages.error(request, "Passwords do not match!")
             return redirect('register')
+        
+        if len(password1) < 6:
+            messages.error(request, "Password too short")
+            return redirect("register")
 
         if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists.")
+            messages.error(request, "Username already exists!")
             return redirect('register')
 
         if User.objects.filter(email=email).exists():
-            messages.error(request, "Email already exists.")
+            messages.error(request, "Email already exists!")
             return redirect('register')
 
         # CREATE USER ONLY ONCE (FIXED)
