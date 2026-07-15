@@ -127,6 +127,171 @@ textarea:focus {
     box-shadow: 0 0 0 3px rgba(65,192,242,0.15);
 }
 
+/*=========================================
+FIELD VALIDATION
+=========================================*/
+
+.form-group{
+    margin-bottom:20px;
+    position:relative;
+}
+
+.field-error{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    margin-top:8px;
+
+    font-size:.82rem;
+    font-weight:500;
+
+    color:#dc2626;
+
+    animation:fadeError .25s ease;
+}
+
+.field-error::before{
+    font-family:"Font Awesome 6 Free";
+    font-weight:900;
+    content:"\f071"; /* triangle-exclamation */
+    color:#dc2626;
+}
+
+.input-error{
+    border:1px solid #dc2626 !important;
+    background:#fff8f8 !important;
+}
+
+.input-error:focus{
+    border-color:#dc2626 !important;
+
+    box-shadow:
+        0 0 0 4px rgba(220,38,38,.12);
+}
+
+/*=========================================
+SUCCESS STATE
+=========================================*/
+
+.input-success{
+    border:1px solid #16a34a !important;
+    background:#f0fdf4 !important;
+}
+
+.input-success:focus{
+    border-color:#16a34a !important;
+
+    box-shadow:
+        0 0 0 4px rgba(22,163,74,.12);
+}
+
+/*=========================================
+FORM HINTS
+=========================================*/
+
+.form-hint{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#64748b;
+
+    font-size:.8rem;
+
+    line-height:1.4;
+}
+
+/*=========================================
+REQUIRED STAR
+=========================================*/
+
+.required{
+    color:#dc2626;
+    margin-left:3px;
+}
+
+/*=========================================
+PASSWORD STRENGTH
+=========================================*/
+.password-toggle{
+    position:absolute;
+    right:15px;
+    top:42px;
+    cursor:pointer;
+}
+
+.password-strength{
+
+    margin-top:10px;
+
+    width:100%;
+
+    height:5px;
+
+    border-radius:50px;
+
+    background:#e5e7eb;
+
+    overflow:hidden;
+}
+
+.password-strength span{
+
+    display:block;
+
+    width:0;
+
+    height:100%;
+
+    border-radius:50px;
+
+    transition:.35s;
+}
+
+.password-strength.weak span{
+
+    width:33%;
+    background:#ef4444;
+}
+
+.password-strength.medium span{
+
+    width:66%;
+    background:#f59e0b;
+}
+
+.password-strength.strong span{
+
+    width:100%;
+    background:#22c55e;
+}
+
+/*=========================================
+SMOOTH ERROR ANIMATION
+=========================================*/
+
+@keyframes fadeError{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-4px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
 /* BUTTON */
 .btn-primary {
     width: 100%;
