@@ -9,8 +9,7 @@ def register(request):
     if request.method == 'POST':
 
         username = request.POST.get('username')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
+        full_name = request.POST.get("full_name", "").strip()
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
@@ -35,14 +34,14 @@ def register(request):
         # CREATE USER ONLY ONCE (FIXED)
         User.objects.create_user(
             username=username,
-            first_name=first_name,
-            last_name=last_name,
+            first_name=full_name.split(' ', 1)[0] if full_name else '',
+            last_name=full_name.split(' ', 1)[1] if full_name and ' ' in full_name else '',
             email=email,
             password=password1,
             role='student'
         )
 
-        messages.success(request, "Account created successfully. Please login.")
+        messages.success(request, "Account created successfully")
         return redirect('login')
 
     return render(request, 'accounts/register.html')
