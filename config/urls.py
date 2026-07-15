@@ -30,7 +30,7 @@ urlpatterns = [
     # AUTH
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
-
+    
     # HOME (LANDING PAGE)
     path('', views.home, name='home'),
     path("role-redirect/", role_redirect, name="role_redirect"),
