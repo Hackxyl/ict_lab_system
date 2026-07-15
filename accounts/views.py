@@ -62,10 +62,3 @@ def role_redirect(request):
         return redirect("admin_dashboard")
 
     return redirect("dashboard")
-
-from django.http import HttpResponse
-from django.contrib.auth import get_user_model
-
-def check_users(request):
-    User = get_user_model()
-    return HttpResponse(f"Users: {User.objects.count()}")
