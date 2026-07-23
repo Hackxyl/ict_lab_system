@@ -1,176 +1,345 @@
 {% extends 'base_public.html' %}
 {% load static %}
 
-{% block title %}Contact ICT Department | Kiangini ICT{% endblock %}
+{% block title %}Contact | Kiangini ICT Centre{% endblock %}
 
 {% block content %}
 
-<!-- ================= HERO ================= -->
+<!-- ===================================================
+CONTACT SECTION
+=================================================== -->
 
-<section class="page-hero">
+<section class="contact-section" id="contact-section">
 
-    <div class="page-hero-content" data-aos="zoom-in">
+    <div class="container">
 
-        <span class="hero-badge">
-            ICT SUPPORT
-        </span>
 
-        <i class="fas fa-headset service-icon-large"></i>
+        <!-- ===============================
+        SECTION TITLE
+        ================================ -->
 
-        <h1>We're Here to Help</h1>
+        <div class="section-title" data-aos="fade-up">
 
-        <p>
-            Contact the Kiangini ICT Department for technical support,
-            computer laboratory assistance, network issues,
-            software installation, or general ICT inquiries.
-        </p>
+            <span>
+                GET IN TOUCH
+            </span>
+
+            <h2>
+                We'd Love to Hear From You
+            </h2>
+
+            <p>
+                Send us your enquiry or visit our ICT Centre
+                for technical support and digital services.
+            </p>
+
+        </div>
+
+
+
+        <!-- ===============================
+        CONTACT GRID
+        ================================ -->
+
+        <div class="contact-grid">
+
+
+
+            <!-- =====================================
+            CONTACT FORM
+            ====================================== -->
+
+            <div class="contact-form-wrapper"
+                 data-aos="fade-right">
+
+
+                <div class="contact-form-card">
+
+
+                    <h3>
+
+                        Send Us a Message
+
+                    </h3>
+
+
+                    <p>
+
+                        We usually respond within 24 hours
+                        on working days.
+
+                    </p>
+
+
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            <div class="alert">
+
+                                {{ message }}
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+
+
+
+                    <form method="POST">
+
+
+                        {% csrf_token %}
+
+
+
+                        <div class="form-row">
+
+
+                            <div class="form-group">
+
+                                <label>
+
+                                    Full Name
+
+                                </label>
+
+
+                                <input
+
+                                    type="text"
+
+                                    name="name"
+
+                                    placeholder="Enter your full name"
+
+                                    required>
+
+                            </div>
+
+
+
+
+                            <div class="form-group">
+
+
+                                <label>
+
+                                    Email Address
+
+                                </label>
+
+
+
+                                <input
+
+                                    type="email"
+
+                                    name="email"
+
+                                    placeholder="example@email.com"
+
+                                    required>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+
+                                Subject
+
+                            </label>
+
+
+
+                            <input
+
+                                type="text"
+
+                                name="subject"
+
+                                placeholder="Network Issue, Computer Lab Booking, etc."
+
+                                required>
+
+
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group">
+
+
+                            <label>
+
+                                Message
+
+                            </label>
+
+
+
+                            <textarea
+
+                                name="message"
+
+                                rows="7"
+
+                                placeholder="Describe your issue..."
+
+                                required></textarea>
+
+
+                        </div>
+
+
+
+
+
+
+                        <button
+
+                            type="submit"
+
+                            class="btn-primary">
+
+
+                            <i class="fas fa-paper-plane"></i>
+
+
+                            Send Message
+
+
+                        </button>
+
+
+
+                    </form>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- =====================================
+            LOCATION MAP
+            ====================================== -->
+
+
+            <aside class="contact-info"
+
+                   data-aos="fade-left">
+
+
+
+                <div class="location-card">
+
+
+
+                    <div class="section-title">
+
+
+                        <span>
+
+                            OUR LOCATION
+
+                        </span>
+
+
+                        <h2>
+
+                            Find Us
+
+                        </h2>
+
+
+
+                        <p>
+
+                            Visit the Kiangini ICT Centre during
+                            official working hours for technical
+                            support and ICT services.
+
+                        </p>
+
+
+                    </div>
+
+
+
+
+
+                    <div class="map-container"
+                         data-aos="zoom-in">
+
+
+                        <iframe
+
+
+                            src="https://maps.google.com/maps?q=Kiangini%20ICT%20Centre,%20Makueni%20County&t=&z=13&ie=UTF8&iwloc=&output=embed"
+
+
+                            loading="lazy"
+
+
+                            allowfullscreen
+
+
+                            referrerpolicy="no-referrer-when-downgrade">
+
+
+                        </iframe>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </aside>
+
+
+
+
+
+        </div>
+        <!-- END CONTACT GRID -->
+
+
 
     </div>
 
-</section>
+</section>       
 
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact-page">
-
-<div class="container">
-
-<div class="section-title" data-aos="fade-up">
-
-<span>TALK WITH US</span>
-
-<h2>Talk To Our ICT Team</h2>
-
-<p>
-Our support team normally responds within one working day.
-</p>
-
-</div>
-
-<div class="contact-layout">
-
-<!-- LEFT -->
-
-<div class="contact-form-card featured"
-data-aos="fade-right">
-
-<h3>
-<i class="fas fa-paper-plane"></i>
-Send Us a Message
-</h3>
-
-{% if messages %}
-{% for message in messages %}
-<div class="alert">
-{{ message }}
-</div>
-{% endfor %}
-{% endif %}
-
-<form method="POST">
-
-{% csrf_token %}
-
-<div class="form-group">
-
-<label>Full Name</label>
-
-<input
-type="text"
-name="name"
-placeholder="John Doe"
-required>
-
-</div>
-
-<div class="form-group">
-
-<label>Email Address</label>
-
-<input
-type="email"
-name="email"
-placeholder="example@email.com"
-required>
-
-</div>
-
-<div class="form-group">
-
-<label>Subject</label>
-
-<input
-type="text"
-name="subject"
-placeholder="Brief description"
-required>
-
-</div>
-
-<div class="form-group">
-
-<label>Message</label>
-
-<textarea
-name="message"
-rows="7"
-placeholder="Book our services or Describe your issue here..."
-required></textarea>
-
-</div>
-
-<button
-class="btn-primary"
-type="submit">
-
-<i class="fas fa-paper-plane"></i>
-
-Send Message
-
-</button>
-
-</form>
-
-</div>
-
-
-<!-- RIGHT -->
-
-<!-- ================= MAP ================= -->
-
-<section class="map-section">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Visit Our Office</h2>
-
-</div>
-
-<div class="map-wrapper featured">
-
-<iframe
-
-src="https://maps.google.com/maps?q=Kiangini ICT Centre,+Makueni%20County&t=&z=13&ie=UTF8&iwloc=&output=embed"
-
-loading="lazy"
-
-allowfullscreen>
-
-</iframe>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ==========================================
-FAQ SECTION
-========================================== -->
+<!-- ===================================================
+FREQUENTLY ASKED QUESTIONS
+=================================================== -->
 
 <section class="faq-section">
 
@@ -178,20 +347,29 @@ FAQ SECTION
 
         <div class="section-title" data-aos="fade-up">
 
-            <span>HELP CENTER</span>
+            <span>
 
-            <h2>Frequently Asked Questions</h2>
+                HELP CENTRE
+
+            </span>
+
+            <h2>
+
+                Frequently Asked Questions
+
+            </h2>
 
             <p>
-                Find answers to common questions about our ICT services,
-                technical support and digital resources.
+
+                Quick answers to common questions about our ICT services.
+
             </p>
 
         </div>
 
         <div class="faq-wrapper">
 
-            <!-- FAQ -->
+            <!-- FAQ 1 -->
 
             <div class="faq-item active">
 
@@ -201,27 +379,32 @@ FAQ SECTION
 
                         <i class="fas fa-headset"></i>
 
-                        <span>How do I request ICT support?</span>
+                        <span>
+
+                            How do I request ICT support?
+
+                        </span>
 
                     </div>
 
-                    <i class="fas fa-chevron-up faq-toggle"></i>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
 
                 </button>
 
                 <div class="faq-answer">
 
                     <p>
-                        Contact the ICT Department through the Help Desk,
-                        email or visit our offices during working hours for
-                        technical assistance.
+
+                        Submit the contact form, email the ICT Centre,
+                        call our office or visit us during working hours.
+
                     </p>
 
                 </div>
 
             </div>
 
-            <!-- FAQ -->
+            <!-- FAQ 2 -->
 
             <div class="faq-item">
 
@@ -229,28 +412,35 @@ FAQ SECTION
 
                     <div class="faq-title">
 
-                        <i class="fas fa-network-wired"></i>
+                        <i class="fas fa-desktop"></i>
 
-                        <span>Who can access the ICT services?</span>
+                        <span>
+
+                            How do I book a computer laboratory?
+
+                        </span>
 
                     </div>
 
-                    <i class="fas fa-chevron-up faq-toggle"></i>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
 
                 </button>
 
                 <div class="faq-answer">
 
                     <p>
-                        ICT services are available to students, staff,
-                        administrators and authorized institutional users.
+
+                        Registered users can log into the system,
+                        check available computers and make bookings
+                        online.
+
                     </p>
 
                 </div>
 
             </div>
 
-            <!-- FAQ -->
+            <!-- FAQ 3 -->
 
             <div class="faq-item">
 
@@ -258,28 +448,34 @@ FAQ SECTION
 
                     <div class="faq-title">
 
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fas fa-clock"></i>
 
-                        <span>Do you provide computer maintenance?</span>
+                        <span>
+
+                            What are your working hours?
+
+                        </span>
 
                     </div>
 
-                    <i class="fas fa-chevron-up faq-toggle"></i>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
 
                 </button>
 
                 <div class="faq-answer">
 
                     <p>
-                        Yes. We provide diagnostics, software installation,
-                        hardware maintenance and general computer support.
+
+                        We are open Monday to Friday from
+                        8:00 AM to 5:00 PM, excluding public holidays.
+
                     </p>
 
                 </div>
 
             </div>
 
-            <!-- FAQ -->
+                        <!-- FAQ 4 -->
 
             <div class="faq-item">
 
@@ -287,52 +483,28 @@ FAQ SECTION
 
                     <div class="faq-title">
 
-                        <i class="fas fa-shield-halved"></i>
+                        <i class="fas fa-user-shield"></i>
 
-                        <span>How is institutional data protected?</span>
+                        <span>
+
+                            Who can access ICT Centre services?
+
+                        </span>
 
                     </div>
 
-                    <i class="fas fa-chevron-up faq-toggle"></i>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
 
                 </button>
 
                 <div class="faq-answer">
 
                     <p>
-                        We implement secure authentication, regular backups,
-                        antivirus protection and cybersecurity best practices
-                        to safeguard institutional information.
-                    </p>
 
-                </div>
+                        Our ICT services are available to students,
+                        staff, trainers and other authorized users of
+                        the Kiangini ICT Centre.
 
-            </div>
-
-            <!-- FAQ -->
-
-            <div class="faq-item">
-
-                <button class="faq-question">
-
-                    <div class="faq-title">
-
-                        <i class="fas fa-graduation-cap"></i>
-
-                        <span>Do you offer ICT training?</span>
-
-                    </div>
-
-                    <i class="fas fa-chevron-up faq-toggle"></i>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    <p>
-                        Yes. We organize digital literacy programmes,
-                        software training and ICT awareness sessions for
-                        students and staff.
                     </p>
 
                 </div>
@@ -345,29 +517,83 @@ FAQ SECTION
 
 </section>
 
+<!-- ===================================================
+CONTACT CTA
+=================================================== -->
 
-<!-- ================= CTA ================= -->
 
-<section class="service-cta">
+<section class="contact-cta">
 
-<i class="fas fa-laptop-medical"></i>
 
-<h2>Need Immediate Assistance?</h2>
+<div class="container">
+
+
+<div class="contact-cta-box" data-aos="zoom-in">
+
+
+<span>
+
+ICT SUPPORT
+
+</span>
+
+
+
+<h2>
+
+Need Immediate Assistance?
+
+</h2>
+
+
 
 <p>
 
-Our ICT professionals are always ready
-to help keep your systems running.
+Our ICT team is ready to help with technical support,
+computer laboratory services, networking and digital
+solutions.
 
 </p>
 
-<a
-href="mailto:ict@kiangini.go.ke"
+
+
+<div class="cta-buttons">
+
+
+<a href="mailto:ict@kiangini.go.ke"
 class="btn-primary">
 
-ict@kiangini.go.ke
+
+<i class="fas fa-envelope"></i>
+
+Email Us
+
 
 </a>
+
+
+
+<a href="tel:+254700000000"
+class="btn-secondary">
+
+
+<i class="fas fa-phone"></i>
+
+Call Us
+
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
 
 </section>
 

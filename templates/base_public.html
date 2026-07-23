@@ -1,159 +1,558 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Kiangini ICT Department{% endblock %}</title>
-    <meta name="description" content="Kiangini ICT Department provides computer lab management, ICT support, training, and digital services for students and staff.">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>
+        {% block title %}
+        Kiangini ICT Centre
+        {% endblock %}
+    </title>
 
-    <!-- AOS -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <meta
+        name="description"
+        content="Official website of Kiangini ICT Centre providing ICT support, 
+              computer laboratory services, digital training, networking solutions,
+              and technology resources for students, staff, and the community.">
 
-    <!-- Base CSS (Public Pages) -->
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <meta
+        name="theme-color"
+        content="#41C0F2">
 
-    {% block extra_css %}{% endblock %}
+    <!-- ==========================
+    Google Fonts
+    =========================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet">
+
+    <!-- ==========================
+    Font Awesome
+    =========================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================
+    AOS
+    =========================== -->
+
+    <link
+        href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+        rel="stylesheet">
+
+    <!-- ==========================
+    Base CSS
+    =========================== -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/base.css' %}">
+
+    {% block extra_css %}
+    {% endblock %}
+
 </head>
+
 <body>
 
-<header class="navbar">
-    <div class="nav-container">
-    <div class="logo">
+<!-- ==================================================
+TOP INFORMATION BAR
+=================================================== -->
 
-    <img src="{% static 'images/logo.png' %}" alt="Logo">
+<div class="topbar">
 
-    <div class="logo-text">
-        <h2>Kiangini <span>ICT</span></h2>
+    <div class="container topbar-wrapper">
+
+        <div class="topbar-left">
+
+            <a href="{% url 'contact' %}">
+
+            <i class="fas fa-headset"></i>
+
+                 Help Desk
+
+            </a>
+
+            <span class="divider"></span>
+
+            <a href="mailto:ict@kiangini.go.ke">
+
+                <i class="fas fa-envelope"></i>
+
+                ict@kiangini.go.ke
+
+            </a>
+
+
+        </div>
+
+        <div class="topbar-right">
+
+            {% if user.is_authenticated %}
+
+                <span>
+
+                    <i class="fas fa-user-circle"></i>
+
+                    Welcome,
+                    <strong>
+
+                        {{ user.username }}
+
+                    </strong>
+
+                </span>
+
+            {% else %}
+
+                <span>                   
+
+                    Kiangini ICT Centre 
+
+                </span>
+
+            {% endif %}
+
+        </div>
+
     </div>
 
 </div>
 
-    <div class="menu-toggle" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
+<!-- ==================================================
+HEADER
+=================================================== -->
+
+<header
+    class="header"
+    id="header">
+
+    <div class="container nav-container">
+
+        <!-- ======================
+        LOGO
+        ======================= -->
+
+        <a
+            href="{% url 'home' %}"
+            class="logo">
+
+            <img
+
+                src="{% static 'images/logo.png' %}"
+
+                alt="ICT Centre">
+
+            <div class="logo-text">
+
+                <h2>
+
+                    Kiangini ICT
+
+                </h2>
+
+                <small>
+
+                    Centre
+
+                </small>
+
+            </div>
+
+        </a>
+
+        <!-- ======================
+        DESKTOP NAVIGATION
+        ======================= -->
+
+        <nav
+            class="nav-menu"
+            id="navMenu">
+
+            <a
+                href="{% url 'home' %}"
+                class="{% if request.path == '/' %}active{% endif %}">
+                Home
+            </a>
+
+            <a href="{% url 'home' %}#services">
+
+                Services
+
+            </a>
+
+        </nav>
+
+        <!-- ======================
+        ACTION BUTTONS
+        ======================= -->
+
+        <div class="nav-actions">
+
+            {% if user.is_authenticated %}
+
+                <a
+                    href="{% url 'dashboard' %}"
+                    class="btn-nav-primary">
+
+                    <i class="fas fa-gauge-high"></i>
+
+                    Dashboard
+
+                </a>
+
+                <form
+
+                    method="POST"
+
+                    action="{% url 'logout' %}"
+
+                    class="logout-nav-form">
+
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        class="btn-nav-logout">
+
+                        <i class="fas fa-right-from-bracket"></i>
+
+                        Logout
+
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <a
+                    href="{% url 'login' %}"
+                    class="btn-nav-outline">
+
+                    Login
+
+                </a>
+
+                <a
+                    href="{% url 'register' %}"
+                    class="btn-nav-primary">
+
+                    Create Account
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+        <!-- ======================
+        MOBILE MENU BUTTON
+        ======================= -->
+
+        <button
+
+            class="mobile-toggle"
+
+            id="mobileMenuBtn"
+
+            aria-label="Toggle navigation"
+
+            aria-expanded="false"
+
+            aria-controls="mobileMenu">
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
     </div>
 
-    <nav class="nav-links">
-
-       <a href="{% url 'home' %}"
-         class="{% if request.path == '/' %}active{% endif %}">
-              Home
-     </a>
-
-
-    <a href="{% url 'home' %}#services">
-        Services
-   </a>
-
-        {% if user.is_authenticated %}
-            <a href="{% url 'dashboard' %}" class="btn-nav-primary">Dashboard</a>
-            <form action="{% url 'logout' %}" method="post" class="logout-nav-form">
-                {% csrf_token %}
-                <button type="submit" class="btn-nav-logout">Logout</button>
-            </form>
-        {% else %}
-            <a href="{% url 'login' %}" class="btn-nav-primary">Login</a>
-        {% endif %}
-    </nav>
-</div>
 </header>
 
+<!-- ==================================================
+MOBILE MENU
+=================================================== -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu">
+
+    <nav>
+
+        <a href="{% url 'home' %}">
+            <i class="fas fa-house"></i>
+            Home
+        </a>
+
+        <a href="{% url 'home' %}#services">
+            <i class="fas fa-layer-group"></i>
+            Services
+        </a>
+
+        <div class="mobile-divider"></div>
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'dashboard' %}">
+                <i class="fas fa-gauge-high"></i>
+                Dashboard
+            </a>
+
+            <form
+                action="{% url 'logout' %}"
+                method="POST"
+                class="mobile-logout-form">
+
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="mobile-logout-btn">
+
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+            </form>
+
+        {% else %}
+
+            <a href="{% url 'login' %}">
+                <i class="fas fa-right-to-bracket"></i>
+                Login
+            </a>
+
+            <a
+                href="{% url 'register' %}"
+                class="mobile-register">
+
+                <i class="fas fa-user-plus"></i>
+
+                Create Account
+
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</div>
+
+<!-- ==================================================
+MAIN CONTENT
+=================================================== -->
+
 <main class="site-content">
-    {% block content %}{% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
 </main>
 
-<div class="footer-shine"></div>
+<!-- ==================================================
+BACK TO TOP BUTTON
+=================================================== -->
+
+<button
+    id="backToTop"
+    class="back-to-top"
+    aria-label="Back to top">
+
+    <i class="fas fa-arrow-up"></i>
+
+</button>
+
+<!-- ==================================================
+PAGE LOADER
+=================================================== -->
+
+<div id="page-loader">
+    <div class="loader"></div>
+</div>
+
+<!-- ==================================================
+FOOTER
+=================================================== -->
 
 <footer class="footer">
 
-    <div class="footer-top">
+    <div class="container">
 
-        <!-- LEFT -->
+        <div class="footer-grid">
 
-        <div class="footer-column">
+            <!-- =====================================
+            COLUMN 1
+            ====================================== -->
 
-            <div class="footer-logo">
+            <div class="footer-column">
 
-                <i class="fas fa-microchip"></i>
+                <div class="footer-logo">
 
-                <div>
+                    <img
+                        src="{% static 'images/logo.png' %}"
+                        alt="Kiangini ICT Logo">
 
-                    <h3>Kiangini ICT</h3>
+                    <div>
 
-                    <small>ICT Department</small>
+                        <h3>Kiangini ICT</h3>
+
+                        <span>
+                            Centre
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+
+                    Delivering innovative ICT solutions, digital training, and technology support for the whole community.
+                </p>
+
+                <div class="footer-social">
+
+                    <a href="#" aria-label="Facebook">
+
+                        <i class="fab fa-facebook-f"></i>
+
+                    </a>
+
+                    <a href="#" aria-label="Twitter">
+
+                        <i class="fab fa-x-twitter"></i>
+
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+
+                        <i class="fab fa-linkedin-in"></i>
+
+                    </a>
+
+                    <a href="#" aria-label="GitHub">
+
+                        <i class="fab fa-github"></i>
+
+                    </a>
 
                 </div>
 
             </div>
 
-            <p>
+            <!-- =====================================
+            COLUMN 2
+            ====================================== -->
 
-                Providing digital transformation, laboratory management,
-                technical support and modern ICT services for students,
-                lecturers and staff.
+            <div class="footer-column">
 
-            </p>
+                <h4>
 
-            <div class="footer-social">
+                    Quick Links
 
-                <a href="#" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                </h4>
 
-                <a href="#" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+                <ul>
 
-                <a href="#" aria-label="Threads">
-                    <i class="fab fa-threads"></i>
-                </a>
+                    <li>
 
-                <a href="#" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
+                        <a href="{% url 'home' %}">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="{% url 'home' %}#services">
+
+                            Services
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="{% url 'contact' %}">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                    <li>
+
+                        <a href="{% url 'dashboard' %}">
+
+                            Dashboard
+
+                        </a>
+
+                    </li>
+
+                    {% else %}
+
+                    <li>
+
+                        <a href="{% url 'register' %}">
+
+                            Create Account
+
+                        </a>
+
+                    </li>
+
+                    {% endif %}
+
+                </ul>
 
             </div>
 
-        </div>
+            <!-- =====================================
+            COLUMN 4
+            ====================================== -->
 
-        <!-- MIDDLE -->
+            <div class="footer-column">
 
-        <div class="footer-column">
+                <h4>
 
-            <h4>Quick Links</h4>
+                    Contact Information
 
-            <ul class="footer-links">
+                </h4>
 
-                <li><a href="{% url 'home' %}">Home</a></li>
+                <ul class="footer-contact">
 
-                <li><a href="{% url 'home' %}#services">Services</a></li>
+                   
 
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li>
 
-            </ul>
-
-        </div>
-
-        <!-- RIGHT -->
-
-        <div class="footer-column">
-
-            <h4>Contact Information</h4>
-
-            <div class="footer-contact">
-
-                <p>
-
-                    <i class="fas fa-envelope"></i>
-
-                    <span>
+                        <i class="fas fa-envelope"></i>
 
                         <a href="mailto:ict@kiangini.go.ke">
 
@@ -161,15 +560,11 @@
 
                         </a>
 
-                    </span>
+                    </li>
 
-                </p>
+                    <li>
 
-                <p>
-
-                    <i class="fas fa-phone"></i>
-
-                    <span>
+                        <i class="fas fa-phone"></i>
 
                         <a href="tel:+254700000000">
 
@@ -177,74 +572,72 @@
 
                         </a>
 
-                    </span>
+                    </li>
 
-                </p>
+                    <li>
 
-                <p>
+                        <i class="fas fa-clock"></i>
 
-                    <i class="fas fa-location-dot"></i>
+                        <span>
 
-                    <span>
+                            Monday - Friday<br>
 
-                        <a href="https://maps.google.com/?q=Makueni+County,+Kenya"
-                           target="_blank">
+                            8:00 AM - 5:00 PM
 
-                            Kiangini
+                        </span>
 
-                        </a>
+                    </li>
 
-                      , Makueni County
-
-                    </span>
-
-                </p>
-
-                <p>
-
-                    <i class="fas fa-clock"></i>
-
-                    <span>
-
-                        Mon – Fri,  8:00 AM – 5:00 PM
-
-                    </span>
-
-                </p>
+                </ul>
 
             </div>
 
         </div>
 
-    </div>
+        <!-- =====================================
+        FOOTER BOTTOM
+        ====================================== -->
 
-    <div class="footer-bottom">
+        <div class="footer-bottom">
 
-        <p>
+            <p>
 
-            &copy; {% now "Y" %}
+                &copy; {% now "Y" %}
 
-            Kiangini ICT Department.
+                Kiangini ICT Centre.
 
-            All Rights Reserved.
+                All Rights Reserved.
 
-        </p>
+            </p>
 
-        <p>
+            <p>
 
-            Developed & Designed by
+                Developed by
 
-            <strong>Meshack Muindi</strong>
+                <strong>
 
-        </p>
+                    Meshack Muindi
+
+                </strong>
+
+            </p>
+
+        </div>
 
     </div>
 
 </footer>
 
+<!-- ==================================================
+SCRIPTS
+=================================================== -->
+
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
 <script src="{% static 'js/base.js' %}"></script>
-{% block extra_js %}{% endblock %}
-<div id="page-loader"></div>
+
+{% block extra_js %}
+{% endblock %}
+
 </body>
 </html>
